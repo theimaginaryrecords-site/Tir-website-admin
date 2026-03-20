@@ -472,16 +472,36 @@ async function loadAll(){
 }
 
 async function loadArtists(){
-  try{const s=await db.collection('site_artists').orderBy('order').get();artists=[];s.forEach(d=>artists.push({id:d.id,...d.data()}));renderArtists();}catch(e){console.log(e);}
+  try{
+    const s=await db.collection('site_artists').get();
+    artists=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.order??99)-(b.order??99));
+    console.log('Artists loaded:',artists.length);
+    renderArtists();
+  }catch(e){console.error('loadArtists error:',e);toast('Artists error: '+e.message);}
 }
 async function loadReleases(){
-  try{const s=await db.collection('site_releases').orderBy('order').get();releases=[];s.forEach(d=>releases.push({id:d.id,...d.data()}));renderReleases();}catch(e){console.log(e);}
+  try{
+    const s=await db.collection('site_releases').get();
+    releases=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.order??99)-(b.order??99));
+    console.log('Releases loaded:',releases.length);
+    renderReleases();
+  }catch(e){console.error('loadReleases error:',e);toast('Releases error: '+e.message);}
 }
 async function loadServices(){
-  try{const s=await db.collection('site_services').orderBy('order').get();services=[];s.forEach(d=>services.push({id:d.id,...d.data()}));renderServices();}catch(e){console.log(e);}
+  try{
+    const s=await db.collection('site_services').get();
+    services=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.order??99)-(b.order??99));
+    console.log('Services loaded:',services.length);
+    renderServices();
+  }catch(e){console.error('loadServices error:',e);toast('Services error: '+e.message);}
 }
 async function loadReviews(){
-  try{const s=await db.collection('site_reviews').orderBy('order').get();reviews=[];s.forEach(d=>reviews.push({id:d.id,...d.data()}));renderReviews();}catch(e){console.log(e);}
+  try{
+    const s=await db.collection('site_reviews').get();
+    reviews=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.order??99)-(b.order??99));
+    console.log('Reviews loaded:',reviews.length);
+    renderReviews();
+  }catch(e){console.error('loadReviews error:',e);toast('Reviews error: '+e.message);}
 }
 async function loadSettings(){
   try{
