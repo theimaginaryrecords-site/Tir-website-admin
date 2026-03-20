@@ -27,31 +27,30 @@ const ADMIN='theimaginaryrecords@gmail.com';
   --bg:#08080a;--surface:#0f0f12;--card:#16161a;--brd:#222228;
   --gold:#c9a84c;--gold2:#e8c97a;--gold3:rgba(201,168,76,.1);
   --txt:#f4f4f5;--txt2:#a1a1aa;--txt3:#52525b;
-  --grn:#22c55e;--red:#ef4444;--blu:#3b82f6;
+  --grn:#22c55e;--red:#ef4444;
 }
 body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;min-height:100vh;font-size:14px;overflow-x:hidden}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
 @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
 
 /* LOADING */
-#ld{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9999;flex-direction:column;gap:16px}
-.ld-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:7px;color:var(--gold);animation:pulse 1.5s ease infinite}
-.ld-bar{width:120px;height:2px;background:var(--brd);border-radius:2px;overflow:hidden}
+#ld{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9999;flex-direction:column;gap:14px}
+.ld-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:7px;color:var(--gold);animation:pulse 1.5s ease infinite}
+.ld-bar{width:100px;height:2px;background:var(--brd);border-radius:2px;overflow:hidden}
 .ld-fill{height:100%;background:linear-gradient(90deg,transparent,var(--gold),transparent);background-size:200% 100%;animation:shimmer 1.2s ease infinite}
 
 /* AUTH */
 #auth{min-height:100vh;display:none;align-items:center;justify-content:center;background:radial-gradient(ellipse 50% 40% at 50% 0%,rgba(201,168,76,.06) 0%,transparent 70%)}
-.abox{width:400px;max-width:95vw;background:var(--surface);border:1px solid var(--brd);border-radius:16px;padding:44px 40px;box-shadow:0 32px 100px rgba(0,0,0,.6);animation:fadeUp .5s ease}
-.abox-brand{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:6px;color:var(--gold);text-align:center}
-.abox-sub{font-size:11px;color:var(--txt3);letter-spacing:2px;text-transform:uppercase;text-align:center;margin-top:2px;margin-bottom:28px}
+.abox{width:380px;max-width:95vw;background:var(--surface);border:1px solid var(--brd);border-radius:14px;padding:40px;box-shadow:0 32px 100px rgba(0,0,0,.6);animation:fadeUp .5s ease}
+.abox-brand{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:6px;color:var(--gold);text-align:center}
+.abox-sub{font-size:10px;color:var(--txt3);letter-spacing:2px;text-transform:uppercase;text-align:center;margin-top:2px;margin-bottom:24px}
 .iw{margin-bottom:14px}
-.iw label{display:block;font-size:11px;font-weight:600;color:var(--txt2);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-.iw input{width:100%;background:var(--card);border:1px solid var(--brd);border-radius:8px;color:var(--txt);padding:12px 14px;font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:all .2s}
+.iw label{display:block;font-size:11px;font-weight:600;color:var(--txt2);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+.iw input{width:100%;background:var(--card);border:1px solid var(--brd);border-radius:8px;color:var(--txt);padding:11px 13px;font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:all .2s}
 .iw input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.1)}
-.btn-gold{width:100%;padding:13px;background:var(--gold);border:none;border-radius:8px;color:#000;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s}
+.btn-gold{width:100%;padding:12px;background:var(--gold);border:none;border-radius:8px;color:#000;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s}
 .btn-gold:hover{background:var(--gold2);transform:translateY(-1px)}
 .btn-gold:disabled{background:#4a3d1c;color:#666;cursor:not-allowed;transform:none}
 .err-box{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:8px;color:#fca5a5;font-size:12px;padding:10px 12px;margin-bottom:12px;display:none}
@@ -62,154 +61,144 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;min-he
 .layout{display:flex;min-height:100vh}
 
 /* SIDEBAR */
-.sb{width:230px;min-width:230px;background:var(--surface);border-right:1px solid var(--brd);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
-.sb-top{padding:20px 16px 14px;border-bottom:1px solid var(--brd)}
-.sb-brand{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:4px;color:var(--gold)}
+.sb{width:225px;min-width:225px;background:var(--surface);border-right:1px solid var(--brd);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
+.sb-top{padding:18px 16px 12px;border-bottom:1px solid var(--brd)}
+.sb-brand{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:4px;color:var(--gold)}
 .sb-sub{font-size:10px;color:var(--txt3);letter-spacing:1px}
-.sb-admin{display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid var(--brd);background:rgba(201,168,76,.04)}
-.admin-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px rgba(201,168,76,.5);animation:pulse 2s ease infinite}
-.admin-lbl{font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:1px}
-nav{flex:1;padding:8px}
-.ns{font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:2px;padding:10px 10px 4px}
-.ni{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:8px;color:var(--txt2);cursor:pointer;font-size:13px;font-weight:500;transition:all .15s;margin-bottom:1px;position:relative}
+.sb-admin{display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid var(--brd);background:rgba(201,168,76,.04)}
+.adot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 6px rgba(201,168,76,.5);animation:pulse 2s ease infinite}
+nav{flex:1;padding:6px}
+.ns{font-size:9px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:2px;padding:10px 10px 4px}
+.ni{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:7px;color:var(--txt2);cursor:pointer;font-size:13px;font-weight:500;transition:all .15s;margin-bottom:1px;position:relative}
 .ni:hover{background:var(--card);color:var(--txt)}
 .ni.on{background:var(--gold3);color:var(--gold);font-weight:600}
 .ni.on::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:60%;background:var(--gold);border-radius:0 2px 2px 0}
-.ni svg{width:15px;height:15px;flex-shrink:0}
-.sb-bot{padding:10px 8px;border-top:1px solid var(--brd)}
-.so-btn{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:8px;color:var(--txt3);cursor:pointer;font-size:13px;width:100%;background:none;border:none;transition:all .15s}
+.ni svg{width:14px;height:14px;flex-shrink:0}
+.sb-bot{padding:8px;border-top:1px solid var(--brd)}
+.so-btn{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:7px;color:var(--txt3);cursor:pointer;font-size:13px;width:100%;background:none;border:none;transition:all .15s}
 .so-btn:hover{background:rgba(239,68,68,.1);color:var(--red)}
 
 /* MAIN */
 .main{flex:1;overflow-y:auto}
-.topbar{padding:15px 26px;border-bottom:1px solid var(--brd);background:var(--surface);position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(10px)}
-.topbar h1{font-size:17px;font-weight:700}
-.topbar p{font-size:12px;color:var(--txt3);margin-top:1px}
-.btn-sm{padding:8px 16px;background:var(--gold);border:none;border-radius:8px;color:#000;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s}
+.topbar{padding:14px 24px;border-bottom:1px solid var(--brd);background:var(--surface);position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(10px)}
+.topbar h1{font-size:16px;font-weight:700}
+.topbar p{font-size:11px;color:var(--txt3);margin-top:1px}
+.btn-sm{padding:7px 14px;background:var(--gold);border:none;border-radius:7px;color:#000;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s}
 .btn-sm:hover{background:var(--gold2)}
-.content{padding:22px 26px}
+.content{padding:20px 24px}
 .pg{display:none}
-.pg.on{display:block;animation:fadeUp .35s ease}
+.pg.on{display:block;animation:fadeUp .3s ease}
 
 /* SECTION CARD */
-.sec{background:var(--surface);border:1px solid var(--brd);border-radius:10px;margin-bottom:20px;overflow:hidden}
-.sec-head{padding:14px 18px;border-bottom:1px solid var(--brd);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.sec{background:var(--surface);border:1px solid var(--brd);border-radius:10px;margin-bottom:18px;overflow:hidden}
+.sec-head{padding:13px 18px;border-bottom:1px solid var(--brd);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .sec-head h3{font-size:14px;font-weight:700}
 .sec-head p{font-size:12px;color:var(--txt3)}
-.sec-body{padding:18px}
+.sec-body{padding:16px 18px}
 
-/* FORM ELEMENTS */
-.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.fg{display:flex;flex-direction:column;gap:6px}
+/* FORM */
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fg{display:flex;flex-direction:column;gap:5px}
 .fg.full{grid-column:1/-1}
 .fg label{font-size:11px;font-weight:600;color:var(--txt2);text-transform:uppercase;letter-spacing:1px}
-.fg input,.fg select,.fg textarea{width:100%;background:var(--card);border:1px solid var(--brd);border-radius:8px;color:var(--txt);padding:10px 13px;font-family:'Inter',sans-serif;font-size:13px;outline:none;transition:all .2s}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.08)}
+.fg label .hint{font-size:10px;color:var(--txt3);font-weight:400;text-transform:none;letter-spacing:0;margin-left:4px}
+.fg input,.fg select,.fg textarea{width:100%;background:var(--card);border:1px solid var(--brd);border-radius:8px;color:var(--txt);padding:9px 12px;font-family:'Inter',sans-serif;font-size:13px;outline:none;transition:all .2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,168,76,.08)}
 .fg select option{background:#1a1a1e}
 .fg textarea{resize:vertical;min-height:80px;line-height:1.5}
 
-/* PREVIEW IMAGE */
-.img-preview{width:100%;height:120px;border-radius:8px;background:var(--card);border:1px solid var(--brd);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;margin-top:6px}
+/* IMG PREVIEW */
+.img-preview{width:100%;height:110px;border-radius:8px;background:var(--card);border:1px solid var(--brd);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:6px;position:relative}
 .img-preview img{width:100%;height:100%;object-fit:cover}
-.img-preview .img-placeholder{font-size:11px;color:var(--txt3);text-align:center;padding:10px}
-.img-preview-sq{width:80px;height:80px;flex-shrink:0}
+.img-preview .no-img{font-size:11px;color:var(--txt3);text-align:center;padding:8px}
+.logo-preview{width:50px;height:50px;border-radius:6px;background:var(--card);border:1px solid var(--brd);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:6px}
+.logo-preview img{width:100%;height:100%;object-fit:contain;border-radius:6px}
 
-/* ARTIST / RELEASE CARDS */
-.item-list{display:flex;flex-direction:column;gap:10px}
-.item-card{background:var(--card);border:1px solid var(--brd);border-radius:10px;padding:14px;display:flex;gap:14px;align-items:flex-start;transition:border-color .2s}
+/* ITEMS */
+.item-list{display:flex;flex-direction:column;gap:8px}
+.item-card{background:var(--card);border:1px solid var(--brd);border-radius:10px;padding:12px;display:flex;gap:12px;align-items:flex-start;transition:border-color .2s}
 .item-card:hover{border-color:rgba(201,168,76,.2)}
-.item-art{width:72px;height:72px;border-radius:8px;background:var(--surface);border:1px solid var(--brd);flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.item-art{width:64px;height:64px;border-radius:6px;background:var(--surface);border:1px solid var(--brd);flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:20px}
 .item-art img{width:100%;height:100%;object-fit:cover}
-.item-art-placeholder{font-size:20px}
 .item-info{flex:1;min-width:0}
-.item-name{font-size:14px;font-weight:700;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.item-sub{font-size:12px;color:var(--txt2);margin-bottom:6px}
-.item-links{display:flex;gap:6px;flex-wrap:wrap}
-.item-link-badge{font-size:10px;color:var(--txt3);background:var(--surface);border:1px solid var(--brd);padding:2px 8px;border-radius:4px;text-decoration:none;transition:all .2s}
-.item-link-badge:hover{border-color:var(--gold);color:var(--gold)}
-.item-actions{display:flex;gap:8px;align-items:center}
-.btn-edit{padding:6px 14px;background:var(--card);border:1px solid var(--brd);border-radius:6px;color:var(--txt2);font-size:12px;cursor:pointer;transition:all .2s}
+.item-name{font-size:13px;font-weight:700;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item-sub{font-size:12px;color:var(--txt2);margin-bottom:5px}
+.item-links{display:flex;gap:5px;flex-wrap:wrap}
+.lb{font-size:10px;color:var(--txt3);background:var(--surface);border:1px solid var(--brd);padding:2px 7px;border-radius:4px}
+.item-actions{display:flex;gap:6px;align-items:center;flex-shrink:0}
+.btn-edit{padding:5px 12px;background:var(--card);border:1px solid var(--brd);border-radius:6px;color:var(--txt2);font-size:12px;cursor:pointer;transition:all .2s}
 .btn-edit:hover{border-color:var(--gold);color:var(--gold)}
-.btn-del{padding:6px 14px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:6px;color:#f87171;font-size:12px;cursor:pointer;transition:all .2s}
+.btn-del{padding:5px 12px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:6px;color:#f87171;font-size:12px;cursor:pointer;transition:all .2s}
 .btn-del:hover{background:rgba(239,68,68,.2)}
-.btn-up,.btn-dn{padding:5px 9px;background:var(--card);border:1px solid var(--brd);border-radius:6px;color:var(--txt3);font-size:12px;cursor:pointer;transition:all .2s}
-.btn-up:hover,.btn-dn:hover{border-color:var(--gold);color:var(--gold)}
-
-/* REVIEW CARD */
-.review-card{background:var(--card);border:1px solid var(--brd);border-radius:10px;padding:16px;position:relative}
-.review-text{font-size:13px;color:var(--txt2);line-height:1.6;margin-bottom:10px;font-style:italic}
-.review-author{font-size:13px;font-weight:700}
-.review-role{font-size:11px;color:var(--txt3)}
-.stars-display{display:flex;gap:3px;margin-bottom:8px}
-.star{color:var(--gold);font-size:14px}
-
-/* SERVICE CARD */
-.service-card{background:var(--card);border:1px solid var(--brd);border-radius:10px;padding:14px;display:flex;gap:12px;align-items:flex-start}
-.service-icon-box{width:40px;height:40px;background:var(--surface);border:1px solid var(--brd);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
-.service-info{flex:1;min-width:0}
-.service-name{font-size:13px;font-weight:700;margin-bottom:3px}
-.service-desc-preview{font-size:12px;color:var(--txt3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn-ord{padding:5px 8px;background:var(--card);border:1px solid var(--brd);border-radius:6px;color:var(--txt3);font-size:12px;cursor:pointer;transition:all .2s}
+.btn-ord:hover{border-color:var(--gold);color:var(--gold)}
 
 /* MODAL */
-.mo{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:2000;display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:32px 20px}
-.mo.on{display:flex;animation:fadeIn .3s ease}
-.mbox{background:var(--surface);border:1px solid var(--brd);border-radius:14px;width:660px;max-width:95vw;box-shadow:0 32px 100px rgba(0,0,0,.7);animation:fadeUp .3s ease}
-.mh{padding:18px 22px;border-bottom:1px solid var(--brd);display:flex;align-items:center;justify-content:space-between}
-.mh h2{font-size:16px;font-weight:700}
-.mc{background:none;border:1px solid var(--brd);border-radius:8px;color:var(--txt2);width:32px;height:32px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.mo{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:2000;display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:28px 16px}
+.mo.on{display:flex;animation:fadeIn .25s ease}
+.mbox{background:var(--surface);border:1px solid var(--brd);border-radius:14px;width:680px;max-width:96vw;box-shadow:0 32px 80px rgba(0,0,0,.7);animation:fadeUp .3s ease}
+.mh{padding:16px 20px;border-bottom:1px solid var(--brd);display:flex;align-items:center;justify-content:space-between}
+.mh h2{font-size:15px;font-weight:700}
+.mc{background:none;border:1px solid var(--brd);border-radius:7px;color:var(--txt2);width:30px;height:30px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .2s}
 .mc:hover{border-color:var(--red);color:var(--red)}
-.mb{padding:22px}
-.mo-actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
-.btn-save{padding:10px 28px;background:var(--gold);border:none;border-radius:8px;color:#000;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s}
+.mb{padding:20px}
+.mo-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.btn-save{padding:10px 26px;background:var(--gold);border:none;border-radius:8px;color:#000;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s}
 .btn-save:hover{background:var(--gold2)}
 .btn-save:disabled{background:#4a3d1c;color:#666;cursor:not-allowed}
-.btn-cancel{padding:10px 20px;background:none;border:1px solid var(--brd);border-radius:8px;color:var(--txt2);font-size:13px;cursor:pointer;transition:all .2s}
+.btn-cancel{padding:10px 18px;background:none;border:1px solid var(--brd);border-radius:8px;color:var(--txt2);font-size:13px;cursor:pointer;transition:all .2s}
 .btn-cancel:hover{border-color:var(--red);color:var(--red)}
 
+/* SECTION DIVIDERS in modal */
+.fsec{grid-column:1/-1;font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:2px;padding:6px 0;border-bottom:1px solid var(--brd);margin-top:6px}
+
 /* ALERTS */
-.al{padding:10px 14px;border-radius:8px;font-size:12px;margin-bottom:12px;display:none}
+.al{padding:9px 13px;border-radius:7px;font-size:12px;margin-bottom:10px;display:none}
 .al.on{display:block;animation:fadeIn .3s ease}
 .al-e{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#fca5a5}
 .al-s{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:#86efac}
 .empty{text-align:center;padding:40px;color:var(--txt3)}
-.empty-icon{font-size:32px;opacity:.2;margin-bottom:8px}
-.empty-text{font-size:14px;font-weight:600;color:var(--txt2)}
-
-/* BADGE */
-.badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px}
-.b-live{background:rgba(34,197,94,.12);color:#4ade80}
-.b-draft{background:rgba(82,82,91,.2);color:#71717a}
-
-/* SETTINGS GRID */
-.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.setting-group{background:var(--card);border:1px solid var(--brd);border-radius:10px;padding:16px}
-.setting-group h4{font-size:12px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--brd)}
-
-/* DRAG HANDLE */
-.drag-handle{color:var(--txt3);cursor:grab;padding:4px;flex-shrink:0}
-.drag-handle:hover{color:var(--gold)}
+.empty-icon{font-size:28px;opacity:.2;margin-bottom:8px}
+.empty-txt{font-size:14px;font-weight:600;color:var(--txt2)}
 
 /* TOAST */
-.toast{position:fixed;bottom:20px;right:20px;background:var(--surface);border:1px solid var(--brd);border-radius:10px;color:var(--txt);font-size:13px;padding:12px 18px;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;box-shadow:0 8px 32px rgba(0,0,0,.4);transform:translateY(8px)}
+.toast{position:fixed;bottom:18px;right:18px;background:var(--surface);border:1px solid var(--brd);border-radius:10px;color:var(--txt);font-size:13px;padding:11px 16px;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;box-shadow:0 8px 32px rgba(0,0,0,.4);transform:translateY(8px);max-width:300px}
 .toast.on{opacity:1;transform:translateY(0)}
 
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--brd);border-radius:2px}
+/* OVERVIEW GRID */
+.ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.ov-card{background:var(--surface);border:1px solid var(--brd);border-radius:10px;padding:16px;text-align:center}
+.ov-n{font-size:28px;font-weight:800;color:var(--gold)}
+.ov-l{font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
+
+/* REVIEW GRID */
+.rv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rv-card{background:var(--card);border:1px solid var(--brd);border-radius:10px;padding:14px}
+.rv-text{font-size:12px;color:var(--txt2);line-height:1.6;margin-bottom:8px;font-style:italic}
+.rv-author{font-size:13px;font-weight:700}
+.rv-role{font-size:11px;color:var(--txt3)}
+.rv-actions{display:flex;gap:6px;margin-top:10px}
+
+/* LOGO SETTINGS GRID */
+.logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.logo-item{background:var(--card);border:1px solid var(--brd);border-radius:8px;padding:12px}
+.logo-item label{font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:8px}
+.logo-item input{width:100%;background:var(--surface);border:1px solid var(--brd);border-radius:6px;color:var(--txt);padding:8px 10px;font-size:12px;outline:none;transition:border-color .2s}
+.logo-item input:focus{border-color:var(--gold)}
+.logo-item .preview-row{display:flex;align-items:center;gap:10px;margin-top:8px}
+.logo-item .logo-preview-sm{width:36px;height:36px;border-radius:6px;background:var(--surface);border:1px solid var(--brd);overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-item .logo-preview-sm img{width:100%;height:100%;object-fit:contain}
+.logo-item .logo-default{font-size:18px}
+.logo-item .logo-name-sm{font-size:11px;color:var(--txt3)}
 
 @media(max-width:768px){
-  .sb{display:none}
-  .fgrid{grid-template-columns:1fr}
-  .fg.full{grid-column:1}
-  .settings-grid{grid-template-columns:1fr}
-  .content{padding:14px}
-  .item-card{flex-wrap:wrap}
+  .sb{display:none}.ov-grid{grid-template-columns:1fr 1fr}.fg2{grid-template-columns:1fr}.fg.full{grid-column:1}.rv-grid{grid-template-columns:1fr}.logo-grid{grid-template-columns:1fr 1fr}.content{padding:14px}
 }
 </style>
 </head>
 <body>
 
-<div id="ld"><div class="ld-logo">T · I · R</div><div class="ld-bar"><div class="ld-fill"></div></div></div>
+<div id="ld"><div class="ld-logo">T·I·R</div><div class="ld-bar"><div class="ld-fill"></div></div></div>
 
 <!-- AUTH -->
 <div id="auth">
@@ -219,7 +208,7 @@ nav{flex:1;padding:8px}
     <div class="err-box" id="ae"></div>
     <div class="iw"><label>Email</label><input type="email" id="em" value="theimaginaryrecords@gmail.com"/></div>
     <div class="iw"><label>Password</label><input type="password" id="pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"/></div>
-    <button class="btn-gold" id="blg" onclick="doLogin()">Access Website Admin</button>
+    <button class="btn-gold" id="blg" onclick="doLogin()">Access Admin</button>
   </div>
 </div>
 
@@ -230,157 +219,157 @@ nav{flex:1;padding:8px}
 <!-- SIDEBAR -->
 <div class="sb">
   <div class="sb-top"><div class="sb-brand">T·I·R</div><div class="sb-sub">Website Admin</div></div>
-  <div class="sb-admin"><div class="admin-dot"></div><div class="admin-lbl">Label Owner</div></div>
+  <div class="sb-admin"><div class="adot"></div><div style="font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:1px">Label Owner</div></div>
   <nav>
     <div class="ns">Overview</div>
-    <div class="ni on" onclick="goPage('overview',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Dashboard</div>
+    <div class="ni on" onclick="go('overview',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Dashboard</div>
     <div class="ns">Content</div>
-    <div class="ni" onclick="goPage('artists',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Artists / Roster</div>
-    <div class="ni" onclick="goPage('releases',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>Releases / Catalog</div>
-    <div class="ni" onclick="goPage('services',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Label Services</div>
-    <div class="ni" onclick="goPage('reviews',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Reviews / Testimonials</div>
-    <div class="ns">Site Settings</div>
-    <div class="ni" onclick="goPage('settings',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 19.07a10 10 0 0 1 0-14.14"/></svg>Site Settings</div>
-    <div class="ni" onclick="goPage('hero',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M3 9h18M9 21V9"/></svg>Hero / About</div>
+    <div class="ni" onclick="go('artists',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Artists / Roster</div>
+    <div class="ni" onclick="go('releases',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>Releases / Catalogue</div>
+    <div class="ni" onclick="go('services',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Label Services</div>
+    <div class="ni" onclick="go('reviews',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Reviews</div>
+    <div class="ns">Settings</div>
+    <div class="ni" onclick="go('settings',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 19.07a10 10 0 0 1 0-14.14"/></svg>Site Settings</div>
+    <div class="ni" onclick="go('logos',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Platform Logos</div>
+    <div class="ni" onclick="go('hero',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Hero / About</div>
   </nav>
-  <div class="sb-bot"><button class="so-btn" onclick="doSignOut()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Sign Out</button></div>
+  <div class="sb-bot"><button class="so-btn" onclick="doSignOut()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Sign Out</button></div>
 </div>
 
 <div class="main">
   <div class="topbar">
     <div><h1 id="pgt">Dashboard</h1><p id="pgs">Website content manager</p></div>
-    <a href="https://theimaginaryrecords.in" target="_blank" style="text-decoration:none"><button class="btn-sm">↗ View Website</button></a>
+    <a href="https://theimaginaryrecords.in" target="_blank" style="text-decoration:none"><button class="btn-sm">↗ View Site</button></a>
   </div>
 
   <div class="content">
 
-    <!-- ══ OVERVIEW ══ -->
+    <!-- OVERVIEW -->
     <div class="pg on" id="page-overview">
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px">
-        <div class="sec" style="margin:0;padding:16px;text-align:center"><div style="font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">Artists</div><div style="font-size:28px;font-weight:800;color:var(--gold)" id="ov-artists">—</div></div>
-        <div class="sec" style="margin:0;padding:16px;text-align:center"><div style="font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">Releases</div><div style="font-size:28px;font-weight:800;color:var(--txt)" id="ov-releases">—</div></div>
-        <div class="sec" style="margin:0;padding:16px;text-align:center"><div style="font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">Services</div><div style="font-size:28px;font-weight:800;color:var(--txt)" id="ov-services">—</div></div>
-        <div class="sec" style="margin:0;padding:16px;text-align:center"><div style="font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">Reviews</div><div style="font-size:28px;font-weight:800;color:var(--txt)" id="ov-reviews">—</div></div>
+      <div class="ov-grid">
+        <div class="ov-card"><div class="ov-l">Artists</div><div class="ov-n" id="ov-a">—</div></div>
+        <div class="ov-card"><div class="ov-l">Releases</div><div class="ov-n" id="ov-r">—</div></div>
+        <div class="ov-card"><div class="ov-l">Services</div><div class="ov-n" id="ov-s">—</div></div>
+        <div class="ov-card"><div class="ov-l">Reviews</div><div class="ov-n" id="ov-rv">—</div></div>
       </div>
       <div class="sec">
         <div class="sec-head"><h3>Quick Actions</h3></div>
-        <div class="sec-body" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
-          <button class="btn-gold" onclick="goPage('artists',null);openModal('artist')">+ Add Artist</button>
-          <button class="btn-gold" onclick="goPage('releases',null);openModal('release')">+ Add Release</button>
-          <button class="btn-gold" onclick="goPage('reviews',null);openModal('review')">+ Add Review</button>
-          <button class="btn-gold" onclick="goPage('services',null);openModal('service')">+ Add Service</button>
-          <button class="btn-gold" onclick="goPage('settings',null)">⚙ Site Settings</button>
-          <button class="btn-gold" onclick="goPage('hero',null)">✏ Edit Hero Text</button>
+        <div class="sec-body" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+          <button class="btn-gold" onclick="go('artists',null);openModal('artist')">+ Add Artist</button>
+          <button class="btn-gold" onclick="go('releases',null);openModal('release')">+ Add Release</button>
+          <button class="btn-gold" onclick="go('reviews',null);openModal('review')">+ Add Review</button>
+          <button class="btn-gold" onclick="go('services',null);openModal('service')">+ Add Service</button>
+          <button class="btn-gold" onclick="go('settings',null)">⚙ Site Settings</button>
+          <button class="btn-gold" onclick="go('logos',null)">🖼 Platform Logos</button>
         </div>
       </div>
       <div class="sec">
-        <div class="sec-head"><h3>How This Works</h3></div>
-        <div class="sec-body" style="display:flex;flex-direction:column;gap:10px">
-          <div style="background:var(--card);border:1px solid var(--brd);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--txt2);line-height:1.7">
-            <strong style="color:var(--gold)">→ Artists, Releases, Services, Reviews</strong> — Saved to Firestore. Your website reads from Firestore to display content dynamically. Add the Firebase JS snippet to your website to enable live updates.
-          </div>
-          <div style="background:var(--card);border:1px solid var(--brd);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--txt2);line-height:1.7">
-            <strong style="color:var(--gold)">→ Site Settings</strong> — Saves label email, Instagram, phone, address, and other contact info to Firestore collection <code style="color:var(--gold);background:rgba(201,168,76,.08);padding:1px 6px;border-radius:4px">site_settings</code>.
-          </div>
-          <div style="background:var(--card);border:1px solid var(--brd);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--txt2);line-height:1.7">
-            <strong style="color:var(--gold)">→ Firestore Collections used:</strong> <code style="color:var(--gold);background:rgba(201,168,76,.08);padding:1px 6px;border-radius:4px">site_artists</code>, <code style="color:var(--gold);background:rgba(201,168,76,.08);padding:1px 6px;border-radius:4px">site_releases</code>, <code style="color:var(--gold);background:rgba(201,168,76,.08);padding:1px 6px;border-radius:4px">site_services</code>, <code style="color:var(--gold);background:rgba(201,168,76,.08);padding:1px 6px;border-radius:4px">site_reviews</code>, <code style="color:var(--gold);background:rgba(201,168,76,.08);padding:1px 6px;border-radius:4px">site_settings</code>
-          </div>
+        <div class="sec-head"><h3>How It Works</h3></div>
+        <div class="sec-body" style="display:flex;flex-direction:column;gap:8px">
+          <div style="background:var(--card);border:1px solid var(--brd);border-radius:8px;padding:12px;font-size:12px;color:var(--txt2);line-height:1.7"><strong style="color:var(--gold)">→ Firestore Collections:</strong> <code style="color:var(--gold);background:rgba(201,168,76,.08);padding:1px 5px;border-radius:3px">site_artists</code> <code style="color:var(--gold);background:rgba(201,168,76,.08);padding:1px 5px;border-radius:3px">site_releases</code> <code style="color:var(--gold);background:rgba(201,168,76,.08);padding:1px 5px;border-radius:3px">site_services</code> <code style="color:var(--gold);background:rgba(201,168,76,.08);padding:1px 5px;border-radius:3px">site_reviews</code> <code style="color:var(--gold);background:rgba(201,168,76,.08);padding:1px 5px;border-radius:3px">site_settings</code></div>
+          <div style="background:var(--card);border:1px solid var(--brd);border-radius:8px;padding:12px;font-size:12px;color:var(--txt2);line-height:1.7"><strong style="color:var(--gold)">→ Platform Logos</strong> — Saved in <code style="color:var(--gold);background:rgba(201,168,76,.08);padding:1px 5px;border-radius:3px">site_settings</code> as <code style="color:var(--gold);background:rgba(201,168,76,.08);padding:1px 5px;border-radius:3px">logo_spotify</code>, <code style="color:var(--gold);background:rgba(201,168,76,.08);padding:1px 5px;border-radius:3px">logo_apple</code>, etc. Website reads these for release detail pages and artist panels.</div>
+          <div style="background:var(--card);border:1px solid var(--brd);border-radius:8px;padding:12px;font-size:12px;color:var(--txt2);line-height:1.7"><strong style="color:var(--gold)">→ Smart Link</strong> — Each release has a <strong>Smart Link</strong> field. This is the main "STREAM HERE" button on the release detail page. Set it to your linktr.ee, feature.fm, or any single URL that has all platform links.</div>
         </div>
       </div>
     </div>
 
-    <!-- ══ ARTISTS ══ -->
+    <!-- ARTISTS -->
     <div class="pg" id="page-artists">
       <div class="sec">
-        <div class="sec-head">
-          <div><h3>Artists / Roster</h3><p id="artist-count">0 artists</p></div>
-          <button class="btn-sm" onclick="openModal('artist')">+ Add Artist</button>
-        </div>
+        <div class="sec-head"><div><h3>Artists / Roster</h3><p id="artist-cnt">0 artists</p></div><button class="btn-sm" onclick="openModal('artist')">+ Add Artist</button></div>
         <div class="sec-body">
           <div class="al al-s" id="artist-ok"></div>
-          <div class="item-list" id="artist-list"><div class="empty"><div class="empty-icon">🎤</div><div class="empty-text">No artists yet</div></div></div>
+          <div class="item-list" id="artist-list"><div class="empty"><div class="empty-icon">🎤</div><div class="empty-txt">No artists yet</div></div></div>
         </div>
       </div>
     </div>
 
-    <!-- ══ RELEASES ══ -->
+    <!-- RELEASES -->
     <div class="pg" id="page-releases">
       <div class="sec">
-        <div class="sec-head">
-          <div><h3>Releases / Catalog</h3><p id="release-count">0 releases</p></div>
-          <button class="btn-sm" onclick="openModal('release')">+ Add Release</button>
-        </div>
+        <div class="sec-head"><div><h3>Releases / Catalogue</h3><p id="release-cnt">0 releases</p></div><button class="btn-sm" onclick="openModal('release')">+ Add Release</button></div>
         <div class="sec-body">
           <div class="al al-s" id="release-ok"></div>
-          <div class="item-list" id="release-list"><div class="empty"><div class="empty-icon">🎵</div><div class="empty-text">No releases yet</div></div></div>
+          <div class="item-list" id="release-list"><div class="empty"><div class="empty-icon">🎵</div><div class="empty-txt">No releases yet</div></div></div>
         </div>
       </div>
     </div>
 
-    <!-- ══ SERVICES ══ -->
+    <!-- SERVICES -->
     <div class="pg" id="page-services">
       <div class="sec">
-        <div class="sec-head">
-          <div><h3>Label Services</h3><p id="service-count">0 services</p></div>
-          <button class="btn-sm" onclick="openModal('service')">+ Add Service</button>
-        </div>
+        <div class="sec-head"><div><h3>Label Services</h3><p id="service-cnt">0 services</p></div><button class="btn-sm" onclick="openModal('service')">+ Add Service</button></div>
         <div class="sec-body">
           <div class="al al-s" id="service-ok"></div>
-          <div class="item-list" id="service-list"><div class="empty"><div class="empty-icon">⚡</div><div class="empty-text">No services yet</div></div></div>
+          <div class="item-list" id="service-list"><div class="empty"><div class="empty-icon">⚡</div><div class="empty-txt">No services yet</div></div></div>
         </div>
       </div>
     </div>
 
-    <!-- ══ REVIEWS ══ -->
+    <!-- REVIEWS -->
     <div class="pg" id="page-reviews">
       <div class="sec">
-        <div class="sec-head">
-          <div><h3>Reviews / Testimonials</h3><p id="review-count">0 reviews</p></div>
-          <button class="btn-sm" onclick="openModal('review')">+ Add Review</button>
-        </div>
+        <div class="sec-head"><div><h3>Reviews / Testimonials</h3><p id="review-cnt">0 reviews</p></div><button class="btn-sm" onclick="openModal('review')">+ Add Review</button></div>
         <div class="sec-body">
           <div class="al al-s" id="review-ok"></div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px" id="review-list"><div class="empty" style="grid-column:1/-1"><div class="empty-icon">⭐</div><div class="empty-text">No reviews yet</div></div></div>
+          <div class="rv-grid" id="review-list"><div class="empty" style="grid-column:1/-1"><div class="empty-icon">⭐</div><div class="empty-txt">No reviews yet</div></div></div>
         </div>
       </div>
     </div>
 
-    <!-- ══ SETTINGS ══ -->
+    <!-- SITE SETTINGS -->
     <div class="pg" id="page-settings">
-      <div class="sec" style="margin-bottom:16px">
+      <div class="sec">
         <div class="sec-head"><h3>Site Settings</h3><p>Contact info, links & label details</p></div>
         <div class="sec-body">
           <div class="al al-s" id="settings-ok"></div>
-          <div class="fgrid">
-            <div class="fg"><label>Label Email *</label><input type="email" id="st-email" placeholder="theimaginaryrecords@gmail.com"/></div>
+          <div class="fg2">
+            <div class="fg"><label>Label Email</label><input type="email" id="st-email" placeholder="theimaginaryrecords@gmail.com"/></div>
             <div class="fg"><label>Phone / WhatsApp</label><input type="text" id="st-phone" placeholder="+91 XXXXX XXXXX"/></div>
             <div class="fg"><label>Instagram Handle</label><input type="text" id="st-instagram" placeholder="@theimaginaryrecords"/></div>
             <div class="fg"><label>Instagram URL</label><input type="url" id="st-instagram-url" placeholder="https://instagram.com/theimaginaryrecords"/></div>
-            <div class="fg"><label>YouTube Channel URL</label><input type="url" id="st-youtube" placeholder="https://youtube.com/@..."/></div>
+            <div class="fg"><label>YouTube URL</label><input type="url" id="st-youtube" placeholder="https://youtube.com/@..."/></div>
             <div class="fg"><label>Spotify Label Profile</label><input type="url" id="st-spotify" placeholder="https://open.spotify.com/..."/></div>
-            <div class="fg"><label>Apple Music URL</label><input type="url" id="st-apple" placeholder="https://music.apple.com/..."/></div>
             <div class="fg"><label>Twitter / X</label><input type="url" id="st-twitter" placeholder="https://x.com/..."/></div>
-            <div class="fg"><label>Facebook</label><input type="url" id="st-facebook" placeholder="https://facebook.com/..."/></div>
-            <div class="fg"><label>Location / Address</label><input type="text" id="st-location" placeholder="Kashmir, India"/></div>
-            <div class="fg"><label>Artist Portal URL</label><input type="url" id="st-artist-portal" placeholder="https://tir-artist-portal.vercel.app"/></div>
-            <div class="fg"><label>Demo Portal URL</label><input type="url" id="st-demo-portal" placeholder="https://tir-demo-portal.vercel.app"/></div>
-            <div class="fg full"><label>Hero Tagline (short)</label><input type="text" id="st-tagline" placeholder="An independent record label from Kashmir..."/></div>
-            <div class="fg full"><label>Footer Tagline</label><input type="text" id="st-footer-tagline" placeholder="Signing artists. Releasing music. Building legacies."/></div>
-            <div class="fg full"><label>Demo Submission Info (A&R response time)</label><input type="text" id="st-response-time" placeholder="24–48 hours"/></div>
-            <div class="fg full" style="margin-top:4px">
-              <button class="btn-gold" id="settings-btn" onclick="saveSettings()" style="width:auto;padding:12px 36px">Save All Settings</button>
-            </div>
+            <div class="fg"><label>Location</label><input type="text" id="st-location" placeholder="Kashmir, India"/></div>
+            <div class="fg"><label>Artist Portal URL</label><input type="url" id="st-ap" placeholder="https://tir-artist-portal.vercel.app"/></div>
+            <div class="fg"><label>Demo Portal URL</label><input type="url" id="st-dp" placeholder="https://tir-demo-portal.vercel.app"/></div>
+            <div class="fg full"><label>Footer Tagline</label><input type="text" id="st-ft" placeholder="Signing artists. Releasing music. Building legacies."/></div>
+            <div class="fg full"><label>A&R Response Time <span class="hint">(shown in Submit Demo page)</span></label><input type="text" id="st-rt" placeholder="24–48 hours"/></div>
+            <div class="fg full"><button class="btn-gold" id="settings-btn" onclick="saveSettings()" style="width:auto;padding:11px 32px">Save All Settings</button></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ══ HERO / ABOUT ══ -->
+    <!-- PLATFORM LOGOS -->
+    <div class="pg" id="page-logos">
+      <div class="sec">
+        <div class="sec-head"><h3>Platform Logos</h3><p>Paste image URLs — shown on release detail pages &amp; artist panels</p></div>
+        <div class="sec-body">
+          <div class="al al-s" id="logos-ok"></div>
+          <div style="font-size:12px;color:var(--txt3);margin-bottom:16px;background:var(--card);border:1px solid var(--brd);border-radius:8px;padding:10px 14px;line-height:1.7">
+            Paste a <strong style="color:var(--txt2)">direct image URL</strong> for each platform logo. These appear next to platform links on release pages and artist panels. Leave blank to use the platform name as text.
+          </div>
+          <div class="logo-grid" id="logo-grid">
+            <div class="logo-item"><label>Spotify</label><input type="url" id="lg-spotify" placeholder="https://...logo url..." oninput="previewLogo('lg-spotify','lpv-spotify')"/><div class="preview-row"><div class="logo-preview-sm" id="lpv-spotify"><span class="logo-default">🎧</span></div><span class="logo-name-sm">Spotify</span></div></div>
+            <div class="logo-item"><label>Apple Music</label><input type="url" id="lg-apple" placeholder="https://...logo url..." oninput="previewLogo('lg-apple','lpv-apple')"/><div class="preview-row"><div class="logo-preview-sm" id="lpv-apple"><span class="logo-default">🍎</span></div><span class="logo-name-sm">Apple Music</span></div></div>
+            <div class="logo-item"><label>JioSaavn</label><input type="url" id="lg-jiosaavn" placeholder="https://...logo url..." oninput="previewLogo('lg-jiosaavn','lpv-jiosaavn')"/><div class="preview-row"><div class="logo-preview-sm" id="lpv-jiosaavn"><span class="logo-default">🎵</span></div><span class="logo-name-sm">JioSaavn</span></div></div>
+            <div class="logo-item"><label>YouTube Music</label><input type="url" id="lg-youtube" placeholder="https://...logo url..." oninput="previewLogo('lg-youtube','lpv-youtube')"/><div class="preview-row"><div class="logo-preview-sm" id="lpv-youtube"><span class="logo-default">▶️</span></div><span class="logo-name-sm">YouTube</span></div></div>
+            <div class="logo-item"><label>Amazon Music</label><input type="url" id="lg-amazon" placeholder="https://...logo url..." oninput="previewLogo('lg-amazon','lpv-amazon')"/><div class="preview-row"><div class="logo-preview-sm" id="lpv-amazon"><span class="logo-default">📦</span></div><span class="logo-name-sm">Amazon Music</span></div></div>
+            <div class="logo-item"><label>Tidal</label><input type="url" id="lg-tidal" placeholder="https://...logo url..." oninput="previewLogo('lg-tidal','lpv-tidal')"/><div class="preview-row"><div class="logo-preview-sm" id="lpv-tidal"><span class="logo-default">🌊</span></div><span class="logo-name-sm">Tidal</span></div></div>
+          </div>
+          <div style="margin-top:16px"><button class="btn-gold" onclick="saveLogos()" style="padding:11px 32px">Save Platform Logos</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO / ABOUT -->
     <div class="pg" id="page-hero">
-      <div class="sec" style="margin-bottom:16px">
+      <div class="sec" style="margin-bottom:14px">
         <div class="sec-head"><h3>Hero Section</h3></div>
         <div class="sec-body">
-          <div class="fgrid">
+          <div class="fg2">
             <div class="fg"><label>Est. / Eyebrow Text</label><input type="text" id="h-eyebrow" placeholder="EST. 2026 — KASHMIR, INDIA"/></div>
             <div class="fg"><label>Hero CTA Button Text</label><input type="text" id="h-cta" placeholder="SUBMIT DEMO"/></div>
             <div class="fg full"><label>Hero Subtitle</label><input type="text" id="h-subtitle" placeholder="AN INDEPENDENT RECORD LABEL"/></div>
@@ -388,40 +377,35 @@ nav{flex:1;padding:8px}
           </div>
         </div>
       </div>
-      <div class="sec" style="margin-bottom:16px">
+      <div class="sec" style="margin-bottom:14px">
         <div class="sec-head"><h3>About Section</h3></div>
         <div class="sec-body">
-          <div class="fgrid">
-            <div class="fg full"><label>About Paragraph 1</label><textarea id="ab-p1" placeholder="The Imaginary Records is..."></textarea></div>
+          <div class="fg2">
+            <div class="fg full"><label>About Paragraph 1</label><textarea id="ab-p1"></textarea></div>
             <div class="fg full"><label>About Paragraph 2</label><textarea id="ab-p2"></textarea></div>
             <div class="fg full"><label>About Paragraph 3</label><textarea id="ab-p3"></textarea></div>
-            <div class="fg"><label>Stat 1 Number</label><input type="text" id="ab-s1n" placeholder="160+"/></div>
-            <div class="fg"><label>Stat 1 Label</label><input type="text" id="ab-s1l" placeholder="TRACKS RELEASED"/></div>
-            <div class="fg"><label>Stat 2 Number</label><input type="text" id="ab-s2n" placeholder="200+"/></div>
-            <div class="fg"><label>Stat 2 Label</label><input type="text" id="ab-s2l" placeholder="STORE PARTNERS"/></div>
-            <div class="fg"><label>Stat 3 Number</label><input type="text" id="ab-s3n" placeholder="85%"/></div>
-            <div class="fg"><label>Stat 3 Label</label><input type="text" id="ab-s3l" placeholder="ARTIST ROYALTIES"/></div>
-            <div class="fg"><label>Stat 4 Number</label><input type="text" id="ab-s4n" placeholder="48H"/></div>
-            <div class="fg"><label>Stat 4 Label</label><input type="text" id="ab-s4l" placeholder="DELIVERY TIME"/></div>
-            <div class="fg full" style="margin-top:4px">
-              <button class="btn-gold" id="hero-btn" onclick="saveHero()" style="width:auto;padding:12px 36px">Save Hero & About</button>
-            </div>
+            <div class="fg"><label>Stat 1 — Number</label><input type="text" id="ab-s1n" placeholder="160+"/></div>
+            <div class="fg"><label>Stat 1 — Label</label><input type="text" id="ab-s1l" placeholder="TRACKS RELEASED"/></div>
+            <div class="fg"><label>Stat 2 — Number</label><input type="text" id="ab-s2n" placeholder="200+"/></div>
+            <div class="fg"><label>Stat 2 — Label</label><input type="text" id="ab-s2l" placeholder="STORE PARTNERS"/></div>
+            <div class="fg"><label>Stat 3 — Number</label><input type="text" id="ab-s3n" placeholder="85%"/></div>
+            <div class="fg"><label>Stat 3 — Label</label><input type="text" id="ab-s3l" placeholder="ARTIST ROYALTIES"/></div>
+            <div class="fg"><label>Stat 4 — Number</label><input type="text" id="ab-s4n" placeholder="48H"/></div>
+            <div class="fg"><label>Stat 4 — Label</label><input type="text" id="ab-s4l" placeholder="DELIVERY TIME"/></div>
           </div>
         </div>
       </div>
       <div class="sec">
-        <div class="sec-head"><h3>Distribution Plan</h3><p>The free plan features on the Distribution section</p></div>
+        <div class="sec-head"><h3>Distribution Plan</h3></div>
         <div class="sec-body">
-          <div class="fgrid">
-            <div class="fg"><label>Plan Price</label><input type="text" id="dp-price" placeholder="$0"/></div>
-            <div class="fg"><label>Plan Sub-label</label><input type="text" id="dp-sub" placeholder="NO JOINING FEE · NO HIDDEN CHARGES"/></div>
-            <div class="fg full"><label>Plan Features (one per line — prefix with ✓ for active, — for muted)</label><textarea id="dp-features" style="min-height:180px" placeholder="✓ Unlimited releases&#10;✓ 200+ streaming platforms&#10;— Dedicated A&R (signed artists only)"></textarea></div>
-            <div class="fg full">
-              <button class="btn-gold" onclick="savePlan()" style="width:auto;padding:12px 36px">Save Plan</button>
-            </div>
+          <div class="fg2">
+            <div class="fg"><label>Price</label><input type="text" id="dp-price" placeholder="$0"/></div>
+            <div class="fg"><label>Sub-label</label><input type="text" id="dp-sub" placeholder="NO JOINING FEE · NO HIDDEN CHARGES"/></div>
+            <div class="fg full"><label>Plan Features <span class="hint">— one per line. Start with ✓ for active, — for muted</span></label><textarea id="dp-features" style="min-height:160px" placeholder="✓ Unlimited releases&#10;✓ 200+ streaming platforms&#10;— Dedicated A&R (signed artists only)"></textarea></div>
           </div>
         </div>
       </div>
+      <div style="margin-top:4px"><button class="btn-gold" id="hero-btn" onclick="saveHero()" style="padding:11px 32px">Save Hero & About</button></div>
     </div>
 
   </div><!-- /content -->
@@ -429,7 +413,7 @@ nav{flex:1;padding:8px}
 </div><!-- /layout -->
 </div><!-- /panel -->
 
-<!-- ══ MODAL ══ -->
+<!-- MODAL -->
 <div class="mo" id="modal" onclick="if(event.target===this)closeModal()">
   <div class="mbox">
     <div class="mh"><h2 id="modal-title">Add</h2><button class="mc" onclick="closeModal()">✕</button></div>
@@ -440,191 +424,206 @@ nav{flex:1;padding:8px}
 <div class="toast" id="toast"></div>
 
 <script>
-// ── DATA ──
-let artists=[],releases=[],services=[],reviews=[],siteSettings={},heroData={};
+let artists=[],releases=[],services=[],reviews=[];
 let editingId=null,editingType=null;
 
 // ── AUTH ──
 auth.onAuthStateChanged(u=>{
   document.getElementById('ld').style.display='none';
-  if(u&&u.email===ADMIN){document.getElementById('auth').style.display='none';document.getElementById('panel').style.display='block';loadAll();}
-  else if(u&&u.email!==ADMIN){auth.signOut();document.getElementById('auth').style.display='flex';}
-  else{document.getElementById('auth').style.display='flex';document.getElementById('panel').style.display='none';}
+  if(u&&u.email===ADMIN){
+    document.getElementById('auth').style.display='none';
+    document.getElementById('panel').style.display='block';
+    loadAll();
+  } else if(u&&u.email!==ADMIN){
+    auth.signOut();
+    document.getElementById('auth').style.display='flex';
+  } else {
+    document.getElementById('auth').style.display='flex';
+    document.getElementById('panel').style.display='none';
+  }
 });
 async function doLogin(){
-  const em=document.getElementById('em').value.trim(),pw=document.getElementById('pw').value;
-  const btn=document.getElementById('blg'),err=document.getElementById('ae');
+  const em=v('em'),pw=v('pw'),btn=document.getElementById('blg'),err=document.getElementById('ae');
   err.classList.remove('on');
-  if(em!==ADMIN){err.textContent='Access denied.';err.classList.add('on');return;}
-  if(!pw){err.textContent='Please enter your password.';err.classList.add('on');return;}
+  if(em!==ADMIN){err.textContent='Access denied — admin only.';err.classList.add('on');return;}
+  if(!pw){err.textContent='Enter your password.';err.classList.add('on');return;}
   btn.disabled=true;btn.textContent='Signing in...';
   try{await auth.signInWithEmailAndPassword(em,pw);}
-  catch(e){err.textContent='Login failed: '+e.message;err.classList.add('on');btn.disabled=false;btn.textContent='Access Website Admin';}
+  catch(e){err.textContent='Login failed: '+e.message;err.classList.add('on');btn.disabled=false;btn.textContent='Access Admin';}
 }
 function doSignOut(){auth.signOut();}
 
-// ── LOAD ALL ──
+// ── LOAD ──
 async function loadAll(){
-  toast('Loading content...');
-  await Promise.all([loadArtists(),loadReleases(),loadServices(),loadReviews(),loadSettings(),loadHero()]);
-  updateOverview();
-  toast('Content loaded ✓');
+  toast('Loading...');
+  await Promise.all([loadArtists(),loadReleases(),loadServices(),loadReviews(),loadSettings(),loadLogos(),loadHero()]);
+  updateOV();
+  toast('Ready ✓');
 }
 
-async function loadArtists(){try{const s=await db.collection('site_artists').orderBy('order').get();artists=[];s.forEach(d=>artists.push({id:d.id,...d.data()}));renderArtists();}catch(e){console.log(e);}}
-async function loadReleases(){try{const s=await db.collection('site_releases').orderBy('order').get();releases=[];s.forEach(d=>releases.push({id:d.id,...d.data()}));renderReleases();}catch(e){console.log(e);}}
-async function loadServices(){try{const s=await db.collection('site_services').orderBy('order').get();services=[];s.forEach(d=>services.push({id:d.id,...d.data()}));renderServices();}catch(e){console.log(e);}}
-async function loadReviews(){try{const s=await db.collection('site_reviews').orderBy('order').get();reviews=[];s.forEach(d=>reviews.push({id:d.id,...d.data()}));renderReviews();}catch(e){console.log(e);}}
+async function loadArtists(){
+  try{const s=await db.collection('site_artists').orderBy('order').get();artists=[];s.forEach(d=>artists.push({id:d.id,...d.data()}));renderArtists();}catch(e){console.log(e);}
+}
+async function loadReleases(){
+  try{const s=await db.collection('site_releases').orderBy('order').get();releases=[];s.forEach(d=>releases.push({id:d.id,...d.data()}));renderReleases();}catch(e){console.log(e);}
+}
+async function loadServices(){
+  try{const s=await db.collection('site_services').orderBy('order').get();services=[];s.forEach(d=>services.push({id:d.id,...d.data()}));renderServices();}catch(e){console.log(e);}
+}
+async function loadReviews(){
+  try{const s=await db.collection('site_reviews').orderBy('order').get();reviews=[];s.forEach(d=>reviews.push({id:d.id,...d.data()}));renderReviews();}catch(e){console.log(e);}
+}
 async function loadSettings(){
   try{
     const s=await db.collection('site_settings').doc('main').get();
     if(s.exists){
-      siteSettings=s.data();
-      const f=id=>document.getElementById(id);
-      f('st-email').value=siteSettings.email||'';f('st-phone').value=siteSettings.phone||'';
-      f('st-instagram').value=siteSettings.instagram||'';f('st-instagram-url').value=siteSettings.instagramUrl||'';
-      f('st-youtube').value=siteSettings.youtube||'';f('st-spotify').value=siteSettings.spotify||'';
-      f('st-apple').value=siteSettings.apple||'';f('st-twitter').value=siteSettings.twitter||'';
-      f('st-facebook').value=siteSettings.facebook||'';f('st-location').value=siteSettings.location||'';
-      f('st-artist-portal').value=siteSettings.artistPortal||'';f('st-demo-portal').value=siteSettings.demoPortal||'';
-      f('st-tagline').value=siteSettings.tagline||'';f('st-footer-tagline').value=siteSettings.footerTagline||'';
-      f('st-response-time').value=siteSettings.responseTime||'';
+      const d=s.data();
+      const set=(id,val)=>{const el=document.getElementById(id);if(el&&val!==undefined)el.value=val;};
+      set('st-email',d.email);set('st-phone',d.phone);set('st-instagram',d.instagram);
+      set('st-instagram-url',d.instagramUrl);set('st-youtube',d.youtube);set('st-spotify',d.spotify);
+      set('st-twitter',d.twitter);set('st-location',d.location);set('st-ap',d.artistPortal);
+      set('st-dp',d.demoPortal);set('st-ft',d.footerTagline);set('st-rt',d.responseTime);
     }
   }catch(e){console.log(e);}
+}
+async function loadLogos(){
+  try{
+    const s=await db.collection('site_settings').doc('main').get();
+    if(s.exists){
+      const d=s.data();
+      ['spotify','apple','jiosaavn','youtube','amazon','tidal'].forEach(k=>{
+        const val=d['logo_'+k];
+        if(val){
+          const inp=document.getElementById('lg-'+k);
+          if(inp){inp.value=val;previewLogo('lg-'+k,'lpv-'+k);}
+        }
+      });
+    }
+  }catch(e){}
 }
 async function loadHero(){
   try{
     const s=await db.collection('site_settings').doc('hero').get();
     if(s.exists){
-      heroData=s.data();
-      const f=id=>document.getElementById(id);
-      f('h-eyebrow').value=heroData.eyebrow||'';f('h-cta').value=heroData.ctaText||'';
-      f('h-subtitle').value=heroData.subtitle||'';f('h-body').value=heroData.body||'';
-      f('ab-p1').value=heroData.aboutP1||'';f('ab-p2').value=heroData.aboutP2||'';f('ab-p3').value=heroData.aboutP3||'';
-      f('ab-s1n').value=heroData.stat1n||'';f('ab-s1l').value=heroData.stat1l||'';
-      f('ab-s2n').value=heroData.stat2n||'';f('ab-s2l').value=heroData.stat2l||'';
-      f('ab-s3n').value=heroData.stat3n||'';f('ab-s3l').value=heroData.stat3l||'';
-      f('ab-s4n').value=heroData.stat4n||'';f('ab-s4l').value=heroData.stat4l||'';
-      f('dp-price').value=heroData.planPrice||'';f('dp-sub').value=heroData.planSub||'';
-      f('dp-features').value=(heroData.planFeatures||[]).join('\n');
+      const d=s.data();
+      const set=(id,val)=>{const el=document.getElementById(id);if(el&&val)el.value=val;};
+      set('h-eyebrow',d.eyebrow);set('h-cta',d.ctaText);set('h-subtitle',d.subtitle);set('h-body',d.body);
+      set('ab-p1',d.aboutP1);set('ab-p2',d.aboutP2);set('ab-p3',d.aboutP3);
+      set('ab-s1n',d.stat1n);set('ab-s1l',d.stat1l);set('ab-s2n',d.stat2n);set('ab-s2l',d.stat2l);
+      set('ab-s3n',d.stat3n);set('ab-s3l',d.stat3l);set('ab-s4n',d.stat4n);set('ab-s4l',d.stat4l);
+      set('dp-price',d.planPrice);set('dp-sub',d.planSub);
+      if(d.planFeatures)document.getElementById('dp-features').value=d.planFeatures.join('\n');
     }
   }catch(e){console.log(e);}
 }
 
-function updateOverview(){
-  document.getElementById('ov-artists').textContent=artists.length;
-  document.getElementById('ov-releases').textContent=releases.length;
-  document.getElementById('ov-services').textContent=services.length;
-  document.getElementById('ov-reviews').textContent=reviews.length;
+function updateOV(){
+  document.getElementById('ov-a').textContent=artists.length;
+  document.getElementById('ov-r').textContent=releases.length;
+  document.getElementById('ov-s').textContent=services.length;
+  document.getElementById('ov-rv').textContent=reviews.length;
 }
 
-// ── RENDER FUNCTIONS ──
+// ── RENDERS ──
 function renderArtists(){
-  document.getElementById('artist-count').textContent=artists.length+' artist'+(artists.length!==1?'s':'');
+  document.getElementById('artist-cnt').textContent=artists.length+' artist'+(artists.length!==1?'s':'');
   const el=document.getElementById('artist-list');
-  if(!artists.length){el.innerHTML='<div class="empty"><div class="empty-icon">🎤</div><div class="empty-text">No artists yet. Click + Add Artist.</div></div>';return;}
+  if(!artists.length){el.innerHTML='<div class="empty"><div class="empty-icon">🎤</div><div class="empty-txt">No artists yet. Click + Add Artist.</div></div>';updateOV();return;}
   el.innerHTML=artists.map((a,i)=>`
     <div class="item-card">
-      <div class="drag-handle" title="Drag to reorder">⠿</div>
-      <div class="item-art">
-        ${a.imageUrl?`<img src="${a.imageUrl}" onerror="this.parentElement.innerHTML='<span class=item-art-placeholder>🎤</span>'" />`:'<span class="item-art-placeholder">🎤</span>'}
-      </div>
+      <div class="item-art">${a.imageUrl?`<img src="${e(a.imageUrl)}" onerror="this.style.display='none'" />`:'🎤'}</div>
       <div class="item-info">
-        <div class="item-name">${a.name||'—'}</div>
-        <div class="item-sub">${a.genre||'—'} · <span class="badge ${a.status==='signed'?'b-live':'b-draft'}">${a.status||'draft'}</span></div>
+        <div class="item-name">${e(a.name)||'—'}</div>
+        <div class="item-sub">${e(a.genre)||'—'} · <strong style="color:var(--gold);font-size:10px">${a.status||'signed'}</strong></div>
         <div class="item-links">
-          ${a.spotifyUrl?`<a href="${a.spotifyUrl}" target="_blank" class="item-link-badge">🎧 Spotify</a>`:''}
-          ${a.appleMusicUrl?`<a href="${a.appleMusicUrl}" target="_blank" class="item-link-badge">🍎 Apple</a>`:''}
-          ${a.jioSaavnUrl?`<a href="${a.jioSaavnUrl}" target="_blank" class="item-link-badge">🎵 JioSaavn</a>`:''}
-          ${a.youtubeUrl?`<a href="${a.youtubeUrl}" target="_blank" class="item-link-badge">▶️ YouTube</a>`:''}
-          ${a.instagramUrl?`<a href="${a.instagramUrl}" target="_blank" class="item-link-badge">📸 Instagram</a>`:''}
+          ${a.spotifyUrl?'<span class="lb">🎧 Spotify</span>':''}
+          ${a.appleMusicUrl?'<span class="lb">🍎 Apple</span>':''}
+          ${a.jioSaavnUrl?'<span class="lb">🎵 JioSaavn</span>':''}
+          ${a.youtubeUrl?'<span class="lb">▶️ YouTube</span>':''}
+          ${a.instagramUrl?'<span class="lb">📸 Instagram</span>':''}
         </div>
       </div>
       <div class="item-actions">
-        <button class="btn-up" onclick="moveItem('artist',${i},-1)" title="Move up">↑</button>
-        <button class="btn-dn" onclick="moveItem('artist',${i},1)" title="Move down">↓</button>
+        <button class="btn-ord" onclick="moveItem('artist',${i},-1)">↑</button>
+        <button class="btn-ord" onclick="moveItem('artist',${i},1)">↓</button>
         <button class="btn-edit" onclick="openModal('artist','${a.id}')">Edit</button>
         <button class="btn-del" onclick="deleteItem('site_artists','${a.id}','artist')">Delete</button>
       </div>
     </div>`).join('');
-  updateOverview();
+  updateOV();
 }
 
 function renderReleases(){
-  document.getElementById('release-count').textContent=releases.length+' release'+(releases.length!==1?'s':'');
+  document.getElementById('release-cnt').textContent=releases.length+' release'+(releases.length!==1?'s':'');
   const el=document.getElementById('release-list');
-  if(!releases.length){el.innerHTML='<div class="empty"><div class="empty-icon">🎵</div><div class="empty-text">No releases yet. Click + Add Release.</div></div>';return;}
+  if(!releases.length){el.innerHTML='<div class="empty"><div class="empty-icon">🎵</div><div class="empty-txt">No releases yet. Click + Add Release.</div></div>';updateOV();return;}
   el.innerHTML=releases.map((r,i)=>`
     <div class="item-card">
-      <div class="drag-handle">⠿</div>
-      <div class="item-art" style="width:80px;height:80px;border-radius:6px">
-        ${r.artworkUrl?`<img src="${r.artworkUrl}" onerror="this.parentElement.innerHTML='<span class=item-art-placeholder>🎵</span>'" />`:'<span class="item-art-placeholder">🎵</span>'}
-      </div>
+      <div class="item-art" style="width:72px;height:72px;border-radius:6px">${r.artworkUrl?`<img src="${e(r.artworkUrl)}" onerror="this.style.display='none'" />`:'🎵'}</div>
       <div class="item-info">
-        <div class="item-name">${r.title||'—'}</div>
-        <div class="item-sub">${r.artist||'—'} · <span style="color:var(--txt3);font-size:11px">${r.type||'SINGLE'}</span> · ${r.year||'—'}</div>
+        <div class="item-name">${e(r.title)||'—'}</div>
+        <div class="item-sub">${e(r.artist)||'—'} · <span style="color:var(--txt3);font-size:11px">${r.type||'SINGLE'}</span> · ${r.year||'—'}</div>
         <div class="item-links">
-          ${r.spotifyUrl?`<a href="${r.spotifyUrl}" target="_blank" class="item-link-badge">🎧 Spotify</a>`:''}
-          ${r.appleMusicUrl?`<a href="${r.appleMusicUrl}" target="_blank" class="item-link-badge">🍎 Apple</a>`:''}
-          ${r.jioSaavnUrl?`<a href="${r.jioSaavnUrl}" target="_blank" class="item-link-badge">🎵 JioSaavn</a>`:''}
-          ${r.youtubeUrl?`<a href="${r.youtubeUrl}" target="_blank" class="item-link-badge">▶️ YouTube</a>`:''}
-          ${r.amazonUrl?`<a href="${r.amazonUrl}" target="_blank" class="item-link-badge">📦 Amazon</a>`:''}
+          ${r.smartlinkUrl?'<span class="lb">🔗 Smartlink</span>':''}
+          ${r.spotifyUrl?'<span class="lb">🎧 Spotify</span>':''}
+          ${r.appleMusicUrl?'<span class="lb">🍎 Apple</span>':''}
+          ${r.jioSaavnUrl?'<span class="lb">🎵 JioSaavn</span>':''}
+          ${r.youtubeUrl?'<span class="lb">▶️ YouTube</span>':''}
         </div>
       </div>
       <div class="item-actions">
-        <button class="btn-up" onclick="moveItem('release',${i},-1)">↑</button>
-        <button class="btn-dn" onclick="moveItem('release',${i},1)">↓</button>
+        <button class="btn-ord" onclick="moveItem('release',${i},-1)">↑</button>
+        <button class="btn-ord" onclick="moveItem('release',${i},1)">↓</button>
         <button class="btn-edit" onclick="openModal('release','${r.id}')">Edit</button>
         <button class="btn-del" onclick="deleteItem('site_releases','${r.id}','release')">Delete</button>
       </div>
     </div>`).join('');
-  updateOverview();
+  updateOV();
 }
 
 function renderServices(){
-  document.getElementById('service-count').textContent=services.length+' service'+(services.length!==1?'s':'');
+  document.getElementById('service-cnt').textContent=services.length+' service'+(services.length!==1?'s':'');
   const el=document.getElementById('service-list');
-  if(!services.length){el.innerHTML='<div class="empty"><div class="empty-icon">⚡</div><div class="empty-text">No services yet.</div></div>';return;}
+  if(!services.length){el.innerHTML='<div class="empty"><div class="empty-icon">⚡</div><div class="empty-txt">No services yet.</div></div>';updateOV();return;}
   el.innerHTML=services.map((s,i)=>`
     <div class="item-card">
-      <div class="drag-handle">⠿</div>
-      <div class="service-icon-box">${s.icon||'⚡'}</div>
-      <div class="service-info">
-        <div class="service-name">${s.name||'—'}</div>
-        <div class="service-desc-preview">${s.description||'—'}</div>
+      <div class="item-art" style="font-size:22px">${s.icon||'⚡'}</div>
+      <div class="item-info">
+        <div class="item-name">${e(s.name)||'—'}</div>
+        <div class="item-sub" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${e(s.description)||'—'}</div>
       </div>
       <div class="item-actions">
-        <button class="btn-up" onclick="moveItem('service',${i},-1)">↑</button>
-        <button class="btn-dn" onclick="moveItem('service',${i},1)">↓</button>
+        <button class="btn-ord" onclick="moveItem('service',${i},-1)">↑</button>
+        <button class="btn-ord" onclick="moveItem('service',${i},1)">↓</button>
         <button class="btn-edit" onclick="openModal('service','${s.id}')">Edit</button>
         <button class="btn-del" onclick="deleteItem('site_services','${s.id}','service')">Delete</button>
       </div>
     </div>`).join('');
-  updateOverview();
+  updateOV();
 }
 
 function renderReviews(){
-  document.getElementById('review-count').textContent=reviews.length+' review'+(reviews.length!==1?'s':'');
+  document.getElementById('review-cnt').textContent=reviews.length+' review'+(reviews.length!==1?'s':'');
   const el=document.getElementById('review-list');
-  if(!reviews.length){el.innerHTML='<div class="empty" style="grid-column:1/-1"><div class="empty-icon">⭐</div><div class="empty-text">No reviews yet.</div></div>';return;}
+  if(!reviews.length){el.innerHTML='<div class="empty" style="grid-column:1/-1"><div class="empty-icon">⭐</div><div class="empty-txt">No reviews yet.</div></div>';updateOV();return;}
   el.innerHTML=reviews.map((r,i)=>`
-    <div class="review-card">
-      <div class="stars-display">${'★'.repeat(r.stars||5)}</div>
-      <div class="review-text">"${r.text||'—'}"</div>
-      <div class="review-author">${r.author||'—'}</div>
-      <div class="review-role">${r.role||'—'}</div>
-      <div style="display:flex;gap:8px;margin-top:12px">
-        <button class="btn-up" onclick="moveItem('review',${i},-1)" style="font-size:11px">↑</button>
-        <button class="btn-dn" onclick="moveItem('review',${i},1)" style="font-size:11px">↓</button>
+    <div class="rv-card">
+      <div style="display:flex;gap:2px;margin-bottom:6px">${'★'.repeat(r.stars||5)}</div>
+      <div class="rv-text">"${e(r.text)}"</div>
+      <div class="rv-author">${e(r.author)}</div>
+      <div class="rv-role">${e(r.role)}</div>
+      <div class="rv-actions">
+        <button class="btn-ord" onclick="moveItem('review',${i},-1)">↑</button>
+        <button class="btn-ord" onclick="moveItem('review',${i},1)">↓</button>
         <button class="btn-edit" onclick="openModal('review','${r.id}')">Edit</button>
         <button class="btn-del" onclick="deleteItem('site_reviews','${r.id}','review')">Delete</button>
       </div>
     </div>`).join('');
-  updateOverview();
+  updateOV();
 }
 
 // ── MODAL ──
-function openModal(type, id=null){
+function openModal(type,id=null){
   editingType=type;editingId=id;
   const isEdit=!!id;
   document.getElementById('modal-title').textContent=(isEdit?'Edit ':'Add ')+type.charAt(0).toUpperCase()+type.slice(1);
@@ -635,115 +634,116 @@ function openModal(type, id=null){
     if(type==='service')data=services.find(s=>s.id===id)||{};
     if(type==='review')data=reviews.find(r=>r.id===id)||{};
   }
-  document.getElementById('modal-body').innerHTML=modalForm(type,data);
+  document.getElementById('modal-body').innerHTML=modalHtml(type,data);
   document.getElementById('modal').classList.add('on');
+  // Re-trigger previews
+  if(data.imageUrl)previewImg('m-image','img-prev-artist');
+  if(data.artworkUrl)previewImg('m-artwork','img-prev-rel');
 }
 function closeModal(){document.getElementById('modal').classList.remove('on');editingId=null;editingType=null;}
 
-function modalForm(type,d={}){
+function modalHtml(type,d={}){
   if(type==='artist') return `
-    <div class="fgrid">
-      <div class="fg full"><label>Artist Name *</label><input type="text" id="m-name" value="${esc(d.name)}" placeholder="e.g. Aabyd Khan"/></div>
-      <div class="fg full"><label>Genre / Style</label><input type="text" id="m-genre" value="${esc(d.genre)}" placeholder="Hip Hop · Dark Trap · Lo-Fi"/></div>
+    <div class="fg2">
+      <div class="fsec">Basic Info</div>
+      <div class="fg"><label>Artist Name *</label><input id="m-name" value="${e(d.name)}" placeholder="e.g. Aabyd Khan"/></div>
+      <div class="fg"><label>Genre / Style</label><input id="m-genre" value="${e(d.genre)}" placeholder="Hip Hop · Dark Trap"/></div>
       <div class="fg"><label>Status</label><select id="m-status"><option value="signed" ${d.status==='signed'?'selected':''}>Signed</option><option value="upcoming" ${d.status==='upcoming'?'selected':''}>Upcoming</option><option value="distributed" ${d.status==='distributed'?'selected':''}>Distributed</option></select></div>
-      <div class="fg"><label>Tags (comma separated)</label><input type="text" id="m-tags" value="${esc((d.tags||[]).join(', '))}" placeholder="FOUNDER, KASHMIR, TIR ORIGINAL"/></div>
-      <div class="fg full"><label>Artist Bio</label><textarea id="m-bio">${esc(d.bio)}</textarea></div>
-      <div class="fg full"><label>Artist Photo / Image URL</label><input type="url" id="m-image" value="${esc(d.imageUrl)}" placeholder="https://... (paste direct image link)" oninput="previewImg('m-image','img-preview-artist')"/>
-        <div class="img-preview" id="img-preview-artist">${d.imageUrl?`<img src="${esc(d.imageUrl)}" />`:'<div class="img-placeholder">Image preview will appear here</div>'}</div>
+      <div class="fg"><label>Tags <span class="hint">(comma separated)</span></label><input id="m-tags" value="${e((d.tags||[]).join(', '))}" placeholder="FOUNDER, KASHMIR"/></div>
+      <div class="fg full"><label>Bio</label><textarea id="m-bio">${e(d.bio)}</textarea></div>
+      <div class="fsec">Artist Photo</div>
+      <div class="fg full"><label>Photo URL <span class="hint">(direct image link)</span></label>
+        <input type="url" id="m-image" value="${e(d.imageUrl)}" placeholder="https://... direct image link" oninput="previewImg('m-image','img-prev-artist')"/>
+        <div class="img-preview" id="img-prev-artist">${d.imageUrl?`<img src="${e(d.imageUrl)}" onerror="this.innerHTML='<span class=no-img>Image not found</span>'" />`:'<div class="no-img">Paste URL above to preview</div>'}</div>
       </div>
-      <div class="fg"><label>Spotify Artist URL</label><input type="url" id="m-spotify" value="${esc(d.spotifyUrl)}" placeholder="https://open.spotify.com/artist/..."/></div>
-      <div class="fg"><label>Spotify Embed URL</label><input type="url" id="m-spotify-embed" value="${esc(d.spotifyEmbedUrl)}" placeholder="https://open.spotify.com/embed/artist/..."/></div>
-      <div class="fg"><label>Apple Music URL</label><input type="url" id="m-apple" value="${esc(d.appleMusicUrl)}" placeholder="https://music.apple.com/..."/></div>
-      <div class="fg"><label>JioSaavn URL</label><input type="url" id="m-jio" value="${esc(d.jioSaavnUrl)}" placeholder="https://www.jiosaavn.com/..."/></div>
-      <div class="fg"><label>YouTube Channel URL</label><input type="url" id="m-youtube" value="${esc(d.youtubeUrl)}" placeholder="https://youtube.com/..."/></div>
-      <div class="fg"><label>Instagram URL</label><input type="url" id="m-instagram" value="${esc(d.instagramUrl)}" placeholder="https://instagram.com/..."/></div>
-      <div class="fg"><label>Amazon Music URL</label><input type="url" id="m-amazon" value="${esc(d.amazonUrl)}" placeholder="https://music.amazon.com/..."/></div>
-      <div class="fg"><label>Tidal URL</label><input type="url" id="m-tidal" value="${esc(d.tidalUrl)}" placeholder="https://tidal.com/..."/></div>
+      <div class="fsec">Platform Links</div>
+      <div class="fg"><label>Spotify Artist URL</label><input type="url" id="m-spotify" value="${e(d.spotifyUrl)}" placeholder="https://open.spotify.com/artist/..."/></div>
+      <div class="fg"><label>Spotify Embed URL <span class="hint">(for player in panel)</span></label><input type="url" id="m-spotify-embed" value="${e(d.spotifyEmbedUrl)}" placeholder="https://open.spotify.com/embed/artist/..."/></div>
+      <div class="fg"><label>Apple Music URL</label><input type="url" id="m-apple" value="${e(d.appleMusicUrl)}" placeholder="https://music.apple.com/..."/></div>
+      <div class="fg"><label>JioSaavn URL</label><input type="url" id="m-jio" value="${e(d.jioSaavnUrl)}" placeholder="https://www.jiosaavn.com/..."/></div>
+      <div class="fg"><label>YouTube URL</label><input type="url" id="m-youtube" value="${e(d.youtubeUrl)}" placeholder="https://youtube.com/..."/></div>
+      <div class="fg"><label>Instagram URL</label><input type="url" id="m-instagram" value="${e(d.instagramUrl)}" placeholder="https://instagram.com/..."/></div>
+      <div class="fg"><label>Amazon Music URL</label><input type="url" id="m-amazon" value="${e(d.amazonUrl)}" placeholder="https://music.amazon.com/..."/></div>
+      <div class="fg"><label>Tidal URL</label><input type="url" id="m-tidal" value="${e(d.tidalUrl)}" placeholder="https://tidal.com/..."/></div>
     </div>
-    <div class="mo-actions">
-      <button class="btn-save" onclick="saveItem('artist')">Save Artist</button>
-      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-    </div>`;
+    <div class="mo-actions"><button class="btn-save" onclick="saveItem('artist')">Save Artist</button><button class="btn-cancel" onclick="closeModal()">Cancel</button></div>`;
 
   if(type==='release') return `
-    <div class="fgrid">
-      <div class="fg"><label>Release Title *</label><input type="text" id="m-title" value="${esc(d.title)}" placeholder="e.g. GHAZI TAPES"/></div>
-      <div class="fg"><label>Artist Name *</label><input type="text" id="m-artist" value="${esc(d.artist)}" placeholder="e.g. Aabyd Khan"/></div>
-      <div class="fg"><label>Release Type</label><select id="m-type"><option value="SINGLE" ${d.type==='SINGLE'?'selected':''}>Single</option><option value="EP" ${d.type==='EP'?'selected':''}>EP</option><option value="ALBUM" ${d.type==='ALBUM'?'selected':''}>Album</option><option value="MIXTAPE" ${d.type==='MIXTAPE'?'selected':''}>Mixtape</option></select></div>
-      <div class="fg"><label>Year</label><input type="text" id="m-year" value="${esc(d.year)}" placeholder="2026"/></div>
-      <div class="fg full"><label>Cover Artwork URL <span style="color:var(--txt3);font-weight:400;font-size:10px">(direct image link — Google Drive public, Imgur, etc.)</span></label>
-        <input type="url" id="m-artwork" value="${esc(d.artworkUrl)}" placeholder="https://... paste direct image URL" oninput="previewImg('m-artwork','img-preview-release')"/>
-        <div class="img-preview img-preview-sq" style="width:100%;height:160px" id="img-preview-release">${d.artworkUrl?`<img src="${esc(d.artworkUrl)}" />`:'<div class="img-placeholder">Artwork preview will appear here</div>'}</div>
+    <div class="fg2">
+      <div class="fsec">Release Info</div>
+      <div class="fg"><label>Title *</label><input id="m-title" value="${e(d.title)}" placeholder="e.g. GHAZI TAPES"/></div>
+      <div class="fg"><label>Artist *</label><input id="m-artist" value="${e(d.artist)}" placeholder="e.g. Aabyd Khan"/></div>
+      <div class="fg"><label>Type</label><select id="m-type"><option value="SINGLE" ${d.type==='SINGLE'?'selected':''}>Single</option><option value="EP" ${d.type==='EP'?'selected':''}>EP</option><option value="ALBUM" ${d.type==='ALBUM'?'selected':''}>Album</option><option value="MIXTAPE" ${d.type==='MIXTAPE'?'selected':''}>Mixtape</option></select></div>
+      <div class="fg"><label>Year</label><input id="m-year" value="${e(d.year)}" placeholder="2026"/></div>
+      <div class="fg full"><label>Genre</label><input id="m-genre" value="${e(d.genre)}" placeholder="e.g. Hip Hop, Dark Trap"/></div>
+      <div class="fg full"><label>Description</label><textarea id="m-desc">${e(d.description)}</textarea></div>
+      <div class="fsec">Artwork</div>
+      <div class="fg full"><label>Cover Artwork URL <span class="hint">(direct image link — Google Drive public / Imgur)</span></label>
+        <input type="url" id="m-artwork" value="${e(d.artworkUrl)}" placeholder="https://... direct image URL" oninput="previewImg('m-artwork','img-prev-rel')"/>
+        <div class="img-preview" id="img-prev-rel" style="height:160px">${d.artworkUrl?`<img src="${e(d.artworkUrl)}" onerror="this.innerHTML='<span>Not found</span>'" />`:'<div class="no-img">Artwork preview</div>'}</div>
       </div>
-      <div class="fg"><label>Spotify URL</label><input type="url" id="m-spotify" value="${esc(d.spotifyUrl)}" placeholder="https://open.spotify.com/album/..."/></div>
-      <div class="fg"><label>Apple Music URL</label><input type="url" id="m-apple" value="${esc(d.appleMusicUrl)}" placeholder="https://music.apple.com/..."/></div>
-      <div class="fg"><label>JioSaavn URL</label><input type="url" id="m-jio" value="${esc(d.jioSaavnUrl)}" placeholder="https://jiosaavn.com/..."/></div>
-      <div class="fg"><label>YouTube URL</label><input type="url" id="m-youtube" value="${esc(d.youtubeUrl)}" placeholder="https://youtube.com/..."/></div>
-      <div class="fg"><label>Amazon Music URL</label><input type="url" id="m-amazon" value="${esc(d.amazonUrl)}" placeholder="https://music.amazon.com/..."/></div>
-      <div class="fg"><label>Tidal URL</label><input type="url" id="m-tidal" value="${esc(d.tidalUrl)}" placeholder="https://tidal.com/..."/></div>
+      <div class="fsec">Streaming Links</div>
+      <div class="fg full"><label>🔗 Smart Link <span class="hint">(Main "STREAM HERE" button — use linktr.ee, feature.fm, etc.)</span></label><input type="url" id="m-smartlink" value="${e(d.smartlinkUrl)}" placeholder="https://linktr.ee/... or any all-in-one link"/></div>
+      <div class="fg"><label>Spotify URL</label><input type="url" id="m-spotify" value="${e(d.spotifyUrl)}" placeholder="https://open.spotify.com/album/..."/></div>
+      <div class="fg"><label>Apple Music URL</label><input type="url" id="m-apple" value="${e(d.appleMusicUrl)}" placeholder="https://music.apple.com/..."/></div>
+      <div class="fg"><label>JioSaavn URL</label><input type="url" id="m-jio" value="${e(d.jioSaavnUrl)}" placeholder="https://jiosaavn.com/..."/></div>
+      <div class="fg"><label>YouTube URL</label><input type="url" id="m-youtube" value="${e(d.youtubeUrl)}" placeholder="https://youtube.com/..."/></div>
+      <div class="fg"><label>Amazon Music URL</label><input type="url" id="m-amazon" value="${e(d.amazonUrl)}" placeholder="https://music.amazon.com/..."/></div>
+      <div class="fg"><label>Tidal URL</label><input type="url" id="m-tidal" value="${e(d.tidalUrl)}" placeholder="https://tidal.com/..."/></div>
     </div>
-    <div class="mo-actions">
-      <button class="btn-save" onclick="saveItem('release')">Save Release</button>
-      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-    </div>`;
+    <div class="mo-actions"><button class="btn-save" onclick="saveItem('release')">Save Release</button><button class="btn-cancel" onclick="closeModal()">Cancel</button></div>`;
 
   if(type==='service') return `
-    <div class="fgrid">
-      <div class="fg"><label>Service Name *</label><input type="text" id="m-name" value="${esc(d.name)}" placeholder="e.g. GLOBAL DISTRIBUTION"/></div>
-      <div class="fg"><label>Icon (emoji)</label><input type="text" id="m-icon" value="${esc(d.icon)||'⚡'}" placeholder="🎵 or use any emoji" style="font-size:20px"/></div>
-      <div class="fg full"><label>Description *</label><textarea id="m-desc" style="min-height:100px">${esc(d.description)}</textarea></div>
+    <div class="fg2">
+      <div class="fg"><label>Service Name *</label><input id="m-name" value="${e(d.name)}" placeholder="e.g. GLOBAL DISTRIBUTION"/></div>
+      <div class="fg"><label>Icon (emoji)</label><input id="m-icon" value="${e(d.icon)||'⚡'}" placeholder="🎵" style="font-size:20px"/></div>
+      <div class="fg full"><label>Description *</label><textarea id="m-desc" style="min-height:100px">${e(d.description)}</textarea></div>
     </div>
-    <div class="mo-actions">
-      <button class="btn-save" onclick="saveItem('service')">Save Service</button>
-      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-    </div>`;
+    <div class="mo-actions"><button class="btn-save" onclick="saveItem('service')">Save Service</button><button class="btn-cancel" onclick="closeModal()">Cancel</button></div>`;
 
   if(type==='review') return `
-    <div class="fgrid">
-      <div class="fg full"><label>Review Text *</label><textarea id="m-text" style="min-height:100px">${esc(d.text)}</textarea></div>
-      <div class="fg"><label>Author Name *</label><input type="text" id="m-author" value="${esc(d.author)}" placeholder="e.g. ALEX M."/></div>
-      <div class="fg"><label>Author Role</label><input type="text" id="m-role" value="${esc(d.role)}" placeholder="e.g. Independent Artist"/></div>
+    <div class="fg2">
+      <div class="fg full"><label>Review Text *</label><textarea id="m-text" style="min-height:90px">${e(d.text)}</textarea></div>
+      <div class="fg"><label>Author Name *</label><input id="m-author" value="${e(d.author)}" placeholder="e.g. ALEX M."/></div>
+      <div class="fg"><label>Author Role</label><input id="m-role" value="${e(d.role)}" placeholder="e.g. Independent Artist"/></div>
       <div class="fg"><label>Stars (1–5)</label><select id="m-stars"><option value="5" ${(d.stars||5)===5?'selected':''}>★★★★★ (5)</option><option value="4" ${d.stars===4?'selected':''}>★★★★☆ (4)</option><option value="3" ${d.stars===3?'selected':''}>★★★☆☆ (3)</option></select></div>
-      <div class="fg"><label>Platform / Source</label><input type="text" id="m-platform" value="${esc(d.platform)}" placeholder="e.g. Google, Instagram"/></div>
+      <div class="fg"><label>Platform / Source</label><input id="m-platform" value="${e(d.platform)}" placeholder="Google, Instagram..."/></div>
     </div>
-    <div class="mo-actions">
-      <button class="btn-save" onclick="saveItem('review')">Save Review</button>
-      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-    </div>`;
+    <div class="mo-actions"><button class="btn-save" onclick="saveItem('review')">Save Review</button><button class="btn-cancel" onclick="closeModal()">Cancel</button></div>`;
 }
 
 function previewImg(inputId,previewId){
   const url=document.getElementById(inputId)?.value.trim();
-  const box=document.getElementById(previewId);
-  if(!box)return;
-  if(url){box.innerHTML=`<img src="${url}" onerror="this.parentElement.innerHTML='<div class=img-placeholder>Image not found — check URL</div>'" style="width:100%;height:100%;object-fit:cover"/>`;}
-  else{box.innerHTML='<div class="img-placeholder">Preview will appear here</div>';}
+  const box=document.getElementById(previewId);if(!box)return;
+  box.innerHTML=url?`<img src="${url}" onerror="this.parentElement.innerHTML='<div class=no-img>Image not found — check URL</div>'" style="width:100%;height:100%;object-fit:cover"/>`:'<div class="no-img">Paste URL to preview</div>';
+}
+function previewLogo(inputId,previewId){
+  const url=document.getElementById(inputId)?.value.trim();
+  const box=document.getElementById(previewId);if(!box)return;
+  box.innerHTML=url?`<img src="${url}" onerror="this.parentElement.innerHTML='<span>?</span>'" style="width:100%;height:100%;object-fit:contain"/>`:'<span class="logo-default">—</span>';
 }
 
-// ── SAVE ITEM ──
+// ── SAVE ──
 async function saveItem(type){
   const gv=id=>document.getElementById(id)?.value.trim()||'';
-  let data={};
-  let col='';
-
+  let data={},col='';
   if(type==='artist'){
     col='site_artists';
-    if(!gv('m-name'))return toast('Please enter artist name.');
+    if(!gv('m-name'))return toast('Enter artist name.');
     data={name:gv('m-name'),genre:gv('m-genre'),status:gv('m-status'),tags:gv('m-tags').split(',').map(t=>t.trim()).filter(Boolean),bio:gv('m-bio'),imageUrl:gv('m-image'),spotifyUrl:gv('m-spotify'),spotifyEmbedUrl:gv('m-spotify-embed'),appleMusicUrl:gv('m-apple'),jioSaavnUrl:gv('m-jio'),youtubeUrl:gv('m-youtube'),instagramUrl:gv('m-instagram'),amazonUrl:gv('m-amazon'),tidalUrl:gv('m-tidal')};
   } else if(type==='release'){
     col='site_releases';
-    if(!gv('m-title'))return toast('Please enter release title.');
-    data={title:gv('m-title'),artist:gv('m-artist'),type:gv('m-type'),year:gv('m-year'),artworkUrl:gv('m-artwork'),spotifyUrl:gv('m-spotify'),appleMusicUrl:gv('m-apple'),jioSaavnUrl:gv('m-jio'),youtubeUrl:gv('m-youtube'),amazonUrl:gv('m-amazon'),tidalUrl:gv('m-tidal')};
+    if(!gv('m-title'))return toast('Enter release title.');
+    data={title:gv('m-title'),artist:gv('m-artist'),type:gv('m-type'),year:gv('m-year'),genre:gv('m-genre'),description:gv('m-desc'),artworkUrl:gv('m-artwork'),smartlinkUrl:gv('m-smartlink'),spotifyUrl:gv('m-spotify'),appleMusicUrl:gv('m-apple'),jioSaavnUrl:gv('m-jio'),youtubeUrl:gv('m-youtube'),amazonUrl:gv('m-amazon'),tidalUrl:gv('m-tidal')};
   } else if(type==='service'){
     col='site_services';
-    if(!gv('m-name'))return toast('Please enter service name.');
+    if(!gv('m-name'))return toast('Enter service name.');
     data={name:gv('m-name'),icon:gv('m-icon')||'⚡',description:gv('m-desc')};
   } else if(type==='review'){
     col='site_reviews';
-    if(!gv('m-text'))return toast('Please enter review text.');
+    if(!gv('m-text'))return toast('Enter review text.');
     data={text:gv('m-text'),author:gv('m-author'),role:gv('m-role'),stars:Number(gv('m-stars'))||5,platform:gv('m-platform')};
   }
-
   const btn=document.querySelector('#modal .btn-save');
   btn.disabled=true;btn.textContent='Saving...';
   try{
@@ -751,10 +751,8 @@ async function saveItem(type){
       await db.collection(col).doc(editingId).update(data);
       toast('Updated ✓');
     } else {
-      // Get current max order
       const snap=await db.collection(col).get();
-      data.order=snap.size;
-      data.createdAt=new Date().toISOString();
+      data.order=snap.size;data.createdAt=new Date().toISOString();
       await db.collection(col).add(data);
       toast('Added ✓');
     }
@@ -763,79 +761,75 @@ async function saveItem(type){
     if(type==='release')await loadReleases();
     if(type==='service')await loadServices();
     if(type==='review')await loadReviews();
-    updateOverview();
-  }catch(e){toast('Error: '+e.message);}
+  }catch(ex){toast('Error: '+ex.message);}
   btn.disabled=false;btn.textContent='Save '+type.charAt(0).toUpperCase()+type.slice(1);
 }
 
-// ── DELETE ──
 async function deleteItem(col,id,type){
-  if(!confirm('Delete this '+type+'? This cannot be undone.'))return;
-  try{await db.collection(col).doc(id).delete();toast('Deleted ✓');if(type==='artist')await loadArtists();if(type==='release')await loadReleases();if(type==='service')await loadServices();if(type==='review')await loadReviews();updateOverview();}
-  catch(e){toast('Error: '+e.message);}
+  if(!confirm('Delete this '+type+'? Cannot be undone.'))return;
+  try{await db.collection(col).doc(id).delete();toast('Deleted ✓');
+    if(type==='artist')await loadArtists();if(type==='release')await loadReleases();
+    if(type==='service')await loadServices();if(type==='review')await loadReviews();
+  }catch(ex){toast('Error: '+ex.message);}
 }
 
-// ── MOVE (REORDER) ──
 async function moveItem(type,idx,dir){
   const arrMap={artist:artists,release:releases,service:services,review:reviews};
   const colMap={artist:'site_artists',release:'site_releases',service:'site_services',review:'site_reviews'};
-  const arr=arrMap[type];const col=colMap[type];
-  const newIdx=idx+dir;
-  if(newIdx<0||newIdx>=arr.length)return;
-  [arr[idx],arr[newIdx]]=[arr[newIdx],arr[idx]];
+  const arr=arrMap[type],col=colMap[type];
+  const ni=idx+dir;if(ni<0||ni>=arr.length)return;
+  [arr[idx],arr[ni]]=[arr[ni],arr[idx]];
   try{
     const batch=db.batch();
     arr.forEach((item,i)=>batch.update(db.collection(col).doc(item.id),{order:i}));
     await batch.commit();
-    if(type==='artist')renderArtists();if(type==='release')renderReleases();if(type==='service')renderServices();if(type==='review')renderReviews();
+    if(type==='artist')renderArtists();if(type==='release')renderReleases();
+    if(type==='service')renderServices();if(type==='review')renderReviews();
     toast('Order saved ✓');
-  }catch(e){toast('Error: '+e.message);}
+  }catch(ex){toast('Error: '+ex.message);}
 }
 
-// ── SAVE SETTINGS ──
 async function saveSettings(){
   const gv=id=>document.getElementById(id)?.value.trim()||'';
-  const btn=document.getElementById('settings-btn');
-  btn.disabled=true;btn.textContent='Saving...';
-  const data={email:gv('st-email'),phone:gv('st-phone'),instagram:gv('st-instagram'),instagramUrl:gv('st-instagram-url'),youtube:gv('st-youtube'),spotify:gv('st-spotify'),apple:gv('st-apple'),twitter:gv('st-twitter'),facebook:gv('st-facebook'),location:gv('st-location'),artistPortal:gv('st-artist-portal'),demoPortal:gv('st-demo-portal'),tagline:gv('st-tagline'),footerTagline:gv('st-footer-tagline'),responseTime:gv('st-response-time'),updatedAt:new Date().toISOString()};
-  try{await db.collection('site_settings').doc('main').set(data,{merge:true});siteSettings=data;toast('Settings saved ✓');}
-  catch(e){toast('Error: '+e.message);}
+  const btn=document.getElementById('settings-btn');btn.disabled=true;btn.textContent='Saving...';
+  const data={email:gv('st-email'),phone:gv('st-phone'),instagram:gv('st-instagram'),instagramUrl:gv('st-instagram-url'),youtube:gv('st-youtube'),spotify:gv('st-spotify'),twitter:gv('st-twitter'),location:gv('st-location'),artistPortal:gv('st-ap'),demoPortal:gv('st-dp'),footerTagline:gv('st-ft'),responseTime:gv('st-rt'),updatedAt:new Date().toISOString()};
+  try{await db.collection('site_settings').doc('main').set(data,{merge:true});toast('Settings saved ✓');}
+  catch(ex){toast('Error: '+ex.message);}
   btn.disabled=false;btn.textContent='Save All Settings';
 }
 
-// ── SAVE HERO / ABOUT ──
+async function saveLogos(){
+  const gv=id=>document.getElementById(id)?.value.trim()||'';
+  const data={logo_spotify:gv('lg-spotify'),logo_apple:gv('lg-apple'),logo_jiosaavn:gv('lg-jiosaavn'),logo_youtube:gv('lg-youtube'),logo_amazon:gv('lg-amazon'),logo_tidal:gv('lg-tidal'),updatedAt:new Date().toISOString()};
+  try{await db.collection('site_settings').doc('main').set(data,{merge:true});toast('Logos saved ✓');}
+  catch(ex){toast('Error: '+ex.message);}
+}
+
 async function saveHero(){
   const gv=id=>document.getElementById(id)?.value.trim()||'';
-  const btn=document.getElementById('hero-btn');
-  btn.disabled=true;btn.textContent='Saving...';
-  const data={eyebrow:gv('h-eyebrow'),ctaText:gv('h-cta'),subtitle:gv('h-subtitle'),body:gv('h-body'),aboutP1:gv('ab-p1'),aboutP2:gv('ab-p2'),aboutP3:gv('ab-p3'),stat1n:gv('ab-s1n'),stat1l:gv('ab-s1l'),stat2n:gv('ab-s2n'),stat2l:gv('ab-s2l'),stat3n:gv('ab-s3n'),stat3l:gv('ab-s3l'),stat4n:gv('ab-s4n'),stat4l:gv('ab-s4l'),updatedAt:new Date().toISOString()};
+  const btn=document.getElementById('hero-btn');btn.disabled=true;btn.textContent='Saving...';
+  const features=gv('dp-features').split('\n').filter(Boolean);
+  const data={eyebrow:gv('h-eyebrow'),ctaText:gv('h-cta'),subtitle:gv('h-subtitle'),body:gv('h-body'),aboutP1:gv('ab-p1'),aboutP2:gv('ab-p2'),aboutP3:gv('ab-p3'),stat1n:gv('ab-s1n'),stat1l:gv('ab-s1l'),stat2n:gv('ab-s2n'),stat2l:gv('ab-s2l'),stat3n:gv('ab-s3n'),stat3l:gv('ab-s3l'),stat4n:gv('ab-s4n'),stat4l:gv('ab-s4l'),planPrice:gv('dp-price'),planSub:gv('dp-sub'),planFeatures:features,updatedAt:new Date().toISOString()};
   try{await db.collection('site_settings').doc('hero').set(data,{merge:true});toast('Hero & About saved ✓');}
-  catch(e){toast('Error: '+e.message);}
+  catch(ex){toast('Error: '+ex.message);}
   btn.disabled=false;btn.textContent='Save Hero & About';
 }
 
-async function savePlan(){
-  const gv=id=>document.getElementById(id)?.value.trim()||'';
-  const features=gv('dp-features').split('\n').filter(Boolean);
-  try{await db.collection('site_settings').doc('hero').set({planPrice:gv('dp-price'),planSub:gv('dp-sub'),planFeatures:features,updatedAt:new Date().toISOString()},{merge:true});toast('Plan saved ✓');}
-  catch(e){toast('Error: '+e.message);}
-}
-
 // ── NAV ──
-function goPage(name,el){
+function go(name,el){
   document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));
   document.getElementById('page-'+name)?.classList.add('on');
   if(el)el.classList.add('on');
-  const m={overview:['Dashboard','Website content manager'],artists:['Artists / Roster','Manage your artist roster'],releases:['Releases / Catalog','Manage releases and catalog'],services:['Label Services','Manage services section'],reviews:['Testimonials','Manage artist reviews'],settings:['Site Settings','Update contact info and links'],hero:['Hero & About','Edit hero text, about section, stats']};
+  const m={overview:['Dashboard','Website CMS'],artists:['Artists / Roster','Manage your artists'],releases:['Releases / Catalogue','Manage releases'],services:['Label Services','Manage services'],reviews:['Reviews','Manage testimonials'],settings:['Site Settings','Contact & links'],logos:['Platform Logos','Customise streaming icons'],hero:['Hero & About','Edit text & stats']};
   const [t,s]=m[name]||['Admin',''];
-  document.getElementById('pgt').textContent=t;
-  document.getElementById('pgs').textContent=s;
+  document.getElementById('pgt').textContent=t;document.getElementById('pgs').textContent=s;
   window.scrollTo(0,0);
 }
 
-// ── HELPERS ──
-function esc(v){return(v||'').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+// ── UTILS ──
+function v(id){return document.getElementById(id)?.value.trim()||'';}
+function e(s){return(s||'').toString().replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),3000);}
 </script>
 </body>
