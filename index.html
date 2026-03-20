@@ -263,6 +263,16 @@ nav{flex:1;padding:6px}
           <button class="btn-gold" onclick="go('logos',null)">🖼 Platform Logos</button>
         </div>
       </div>
+      <div class="sec" id="seed-sec" style="border-color:rgba(201,168,76,.3)">
+        <div class="sec-head" style="background:rgba(201,168,76,.04)">
+          <div><h3 style="color:var(--gold)">⚡ First Time Setup</h3><p>Firestore is empty — click below to populate with existing website data</p></div>
+          <button class="btn-sm" id="seed-btn" onclick="seedData()">Seed Default Data</button>
+        </div>
+        <div class="sec-body" style="font-size:12px;color:var(--txt3);line-height:1.8">
+          This will add the <strong style="color:var(--txt2)">3 artists</strong> (Aabyd Khan, The Imaginary Bird, The Imaginary Poet), <strong style="color:var(--txt2)">8 releases</strong> (Ghazi Tapes, Alive, Dream, Trending, Drift, My Story, They Call Him OG, Let's Dance), <strong style="color:var(--txt2)">9 services</strong>, and <strong style="color:var(--txt2)">6 reviews</strong> into Firestore so they appear in the admin and on the website.<br/><br/>
+          <span style="color:rgba(239,68,68,.8)">⚠ Only click once. After seeding, this panel will disappear and all data will be editable above.</span>
+        </div>
+      </div>
       <div class="sec">
         <div class="sec-head"><h3>How It Works</h3></div>
         <div class="sec-body" style="display:flex;flex-direction:column;gap:8px">
@@ -522,6 +532,87 @@ function updateOV(){
   document.getElementById('ov-r').textContent=releases.length;
   document.getElementById('ov-s').textContent=services.length;
   document.getElementById('ov-rv').textContent=reviews.length;
+  // Hide seed panel once data exists
+  const seedSec=document.getElementById('seed-sec');
+  if(seedSec){
+    const hasData=artists.length||releases.length||services.length||reviews.length;
+    seedSec.style.display=hasData?'none':'block';
+  }
+}
+
+// ── SEED DEFAULT DATA ──
+async function seedData(){
+  if(!confirm('This will add all default artists, releases, services and reviews to Firestore. Only do this once. Continue?'))return;
+  const btn=document.getElementById('seed-btn');
+  btn.disabled=true;btn.textContent='Seeding...';
+
+  const DEFAULT_ARTISTS=[
+    {name:'AABYD KHAN',genre:'HIP HOP · DARK TRAP · LO-FI · UK DRILL',status:'signed',tags:['SIGNED','FOUNDER','KASHMIR'],bio:'Aabyd Khan is the founder of The Imaginary Records and a prolific independent artist from Kashmir with 160+ tracks distributed globally across 200+ platforms.',spotifyUrl:'https://open.spotify.com/artist/38T4P8hX75BCHncTf8TLKm',spotifyEmbedUrl:'https://open.spotify.com/embed/artist/38T4P8hX75BCHncTf8TLKm?utm_source=generator',instagramUrl:'https://instagram.com/aabyd_khan',imageUrl:''},
+    {name:'THE IMAGINARY BIRD',genre:'AMBIENT · INSTRUMENTAL · CINEMATIC',status:'signed',tags:['SIGNED','TIR ORIGINAL'],bio:'The Imaginary Bird is a TIR original project exploring ambient, instrumental and cinematic soundscapes.',spotifyUrl:'https://open.spotify.com/artist/6RrE0UvJNBRf3eRH4gyFmG',spotifyEmbedUrl:'https://open.spotify.com/embed/artist/6RrE0UvJNBRf3eRH4gyFmG?utm_source=generator',imageUrl:''},
+    {name:'THE IMAGINARY POET',genre:'SPOKEN WORD · SPIRITUAL · AMBIENT',status:'signed',tags:['SIGNED','TIR ORIGINAL'],bio:'The Imaginary Poet blends spoken word, spiritual themes and ambient soundscapes into a unique sonic experience.',spotifyUrl:'https://open.spotify.com/artist/39GevCS8IvbhgaaCRfHbnF',spotifyEmbedUrl:'https://open.spotify.com/embed/artist/39GevCS8IvbhgaaCRfHbnF?utm_source=generator',imageUrl:''}
+  ];
+
+  const DEFAULT_RELEASES=[
+    {title:'GHAZI TAPES',artist:'Aabyd Khan',type:'EP',year:'2026',genre:'Hip Hop',description:'The Ghazi Tapes EP by Aabyd Khan — a dark, cinematic project inspired by Ottoman history and the warrior spirit.',artworkUrl:'',appleMusicUrl:'https://music.apple.com/us/album/ghazi-tapes-ep/1883743287',spotifyUrl:'',jioSaavnUrl:'',youtubeUrl:'',amazonUrl:'',tidalUrl:'',smartlinkUrl:'https://music.apple.com/us/album/ghazi-tapes-ep/1883743287'},
+    {title:'ALIVE',artist:'Aabyd Khan',type:'SINGLE',year:'2026',genre:'Hip Hop',description:'',artworkUrl:'',appleMusicUrl:'https://music.apple.com/us/album/alive-single/1877977840',spotifyUrl:'',jioSaavnUrl:'',youtubeUrl:'',amazonUrl:'',tidalUrl:'',smartlinkUrl:'https://music.apple.com/us/album/alive-single/1877977840'},
+    {title:'DREAM',artist:'Aabyd Khan',type:'SINGLE',year:'2026',genre:'Hip Hop',description:'',artworkUrl:'',appleMusicUrl:'https://music.apple.com/us/album/dream-single/1873184408',spotifyUrl:'',jioSaavnUrl:'',youtubeUrl:'',amazonUrl:'',tidalUrl:'',smartlinkUrl:'https://music.apple.com/us/album/dream-single/1873184408'},
+    {title:'TRENDING',artist:'Aabyd Khan',type:'SINGLE',year:'2026',genre:'Hip Hop',description:'',artworkUrl:'',appleMusicUrl:'https://music.apple.com/us/album/trending-single/1873188727',spotifyUrl:'',jioSaavnUrl:'',youtubeUrl:'',amazonUrl:'',tidalUrl:'',smartlinkUrl:'https://music.apple.com/us/album/trending-single/1873188727'},
+    {title:'DRIFT',artist:'Aabyd Khan',type:'SINGLE',year:'2026',genre:'Lo-Fi',description:'',artworkUrl:'',appleMusicUrl:'https://music.apple.com/us/album/drift-single/1873184563',spotifyUrl:'',jioSaavnUrl:'',youtubeUrl:'',amazonUrl:'',tidalUrl:'',smartlinkUrl:'https://music.apple.com/us/album/drift-single/1873184563'},
+    {title:'MY STORY',artist:'Aabyd Khan',type:'ALBUM',year:'2025',genre:'Hip Hop',description:'',artworkUrl:'',appleMusicUrl:'https://music.apple.com/us/album/my-story/1846604222',spotifyUrl:'',jioSaavnUrl:'',youtubeUrl:'',amazonUrl:'',tidalUrl:'',smartlinkUrl:'https://music.apple.com/us/album/my-story/1846604222'},
+    {title:'THEY CALL HIM OG',artist:'Aabyd Khan',type:'SINGLE',year:'2025',genre:'Hip Hop',description:'',artworkUrl:'',appleMusicUrl:'',spotifyUrl:'https://open.spotify.com/artist/38T4P8hX75BCHncTf8TLKm',jioSaavnUrl:'',youtubeUrl:'',amazonUrl:'',tidalUrl:'',smartlinkUrl:'https://open.spotify.com/artist/38T4P8hX75BCHncTf8TLKm'},
+    {title:"LET'S DANCE",artist:'Aabyd Khan',type:'SINGLE',year:'2025',genre:'Hip Hop',description:'',artworkUrl:'',appleMusicUrl:'',spotifyUrl:'https://open.spotify.com/artist/38T4P8hX75BCHncTf8TLKm',jioSaavnUrl:'',youtubeUrl:'',amazonUrl:'',tidalUrl:'',smartlinkUrl:'https://open.spotify.com/artist/38T4P8hX75BCHncTf8TLKm'}
+  ];
+
+  const DEFAULT_SERVICES=[
+    {icon:'🎵',name:'A&R DEVELOPMENT',description:'Artist discovery, signing, and creative development. We find raw talent and shape it into something undeniable.'},
+    {icon:'🌍',name:'GLOBAL DISTRIBUTION',description:'Your music on 200+ platforms worldwide including Spotify, Apple Music, Amazon, Tidal, and regional stores.'},
+    {icon:'🛡️',name:'RIGHTS MANAGEMENT',description:'Full content ID, global copyright protection, and YouTube monetisation. Your work, protected everywhere.'},
+    {icon:'🎬',name:'VEVO & VIDEO',description:'Official VEVO artist channel setup, music video distribution, and YouTube channel management.'},
+    {icon:'⭐',name:'ARTIST VERIFICATION',description:'Verified artist profiles across Spotify, Apple Music, and YouTube Music. Establish your official presence.'},
+    {icon:'🎧',name:'AUDIO MASTERING',description:'Professional mastering services that prep your tracks for radio, streaming, and live performance standards.'},
+    {icon:'🎨',name:'COVER ART & BRANDING',description:'Visual identity for your releases. Cover art generation, artist branding, and promotional assets.'},
+    {icon:'⚡',name:'PRE-SAVE CAMPAIGNS',description:'Build anticipation with pre-save smartlinks before every release. Maximise day-one streams and playlist adds.'},
+    {icon:'📊',name:'ROYALTY ANALYTICS',description:'Monthly detailed reports on streams, revenue, and platform performance. Transparent data, every month.'}
+  ];
+
+  const DEFAULT_REVIEWS=[
+    {text:'Best distributor I have ever used. Fast delivery and the team actually cares about your music.',author:'ALEX M.',role:'Independent Artist',stars:5},
+    {text:'The VEVO distribution changed everything for me. Getting my official channel was a dream come true.',author:'SARAH K.',role:'Music Producer',stars:5},
+    {text:'My music was live on all platforms within 48 hours. The mastering service made it sound incredible.',author:'CHRIS P.',role:'Indie Rock Artist',stars:5},
+    {text:'Finally a label that lets me keep 100% of my rights. Transparent, fast, and genuinely supportive.',author:'MARIA L.',role:'Singer-Songwriter',stars:5},
+    {text:'Professional team, quick responses. They treat every artist like a priority regardless of how big you are.',author:'THE BEATS',role:'Hip-Hop Group',stars:5},
+    {text:'Submitted my demo on a Sunday, got a reply by Tuesday. From signing to release, the process was seamless.',author:'DJ RAVE',role:'Electronic Artist',stars:5}
+  ];
+
+  try{
+    const batch=db.batch();
+    const ts=new Date().toISOString();
+
+    DEFAULT_ARTISTS.forEach((a,i)=>{
+      const ref=db.collection('site_artists').doc();
+      batch.set(ref,{...a,order:i,createdAt:ts});
+    });
+    DEFAULT_RELEASES.forEach((r,i)=>{
+      const ref=db.collection('site_releases').doc();
+      batch.set(ref,{...r,order:i,createdAt:ts});
+    });
+    DEFAULT_SERVICES.forEach((s,i)=>{
+      const ref=db.collection('site_services').doc();
+      batch.set(ref,{...s,order:i,createdAt:ts});
+    });
+    DEFAULT_REVIEWS.forEach((r,i)=>{
+      const ref=db.collection('site_reviews').doc();
+      batch.set(ref,{...r,order:i,createdAt:ts});
+    });
+
+    await batch.commit();
+    toast('✓ All data seeded to Firestore!');
+    await loadAll();
+  }catch(ex){
+    toast('Seed failed: '+ex.message);
+    console.error(ex);
+    btn.disabled=false;btn.textContent='Seed Default Data';
+  }
 }
 
 // ── RENDERS ──
