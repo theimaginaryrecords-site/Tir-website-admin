@@ -166,7 +166,7 @@ nav{flex:1;padding:6px}
 .toast.on{opacity:1;transform:translateY(0)}
 
 /* OVERVIEW GRID */
-.ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.ov-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:18px}
 .ov-card{background:var(--surface);border:1px solid var(--brd);border-radius:10px;padding:16px;text-align:center}
 .ov-n{font-size:28px;font-weight:800;color:var(--red)}
 .ov-l{font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
@@ -192,7 +192,7 @@ nav{flex:1;padding:6px}
 .logo-item .logo-name-sm{font-size:11px;color:var(--txt3)}
 
 @media(max-width:768px){
-  .sb{display:none}.ov-grid{grid-template-columns:1fr 1fr}.fg2{grid-template-columns:1fr}.fg.full{grid-column:1}.rv-grid{grid-template-columns:1fr}.logo-grid{grid-template-columns:1fr 1fr}.content{padding:14px}
+  .sb{display:none}.ov-grid{grid-template-columns:1fr 1fr 1fr}.fg2{grid-template-columns:1fr}.fg.full{grid-column:1}.rv-grid{grid-template-columns:1fr}.logo-grid{grid-template-columns:1fr 1fr}.content{padding:14px}
 }
 </style>
 </head>
@@ -228,6 +228,7 @@ nav{flex:1;padding:6px}
     <div class="ni" onclick="go('releases',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>Releases / Catalogue</div>
     <div class="ni" onclick="go('services',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Label Services</div>
     <div class="ni" onclick="go('reviews',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Reviews</div>
+    <div class="ni" onclick="go('blog',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Blog</div>
     <div class="ns">Settings</div>
     <div class="ni" onclick="go('settings',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 19.07a10 10 0 0 1 0-14.14"/></svg>Site Settings</div>
     <div class="ni" onclick="go('logos',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Platform Logos</div>
@@ -251,6 +252,7 @@ nav{flex:1;padding:6px}
         <div class="ov-card"><div class="ov-l">Releases</div><div class="ov-n" id="ov-r">—</div></div>
         <div class="ov-card"><div class="ov-l">Services</div><div class="ov-n" id="ov-s">—</div></div>
         <div class="ov-card"><div class="ov-l">Reviews</div><div class="ov-n" id="ov-rv">—</div></div>
+        <div class="ov-card"><div class="ov-l">Blog Posts</div><div class="ov-n" id="ov-b">—</div></div>
       </div>
       <div class="sec">
         <div class="sec-head"><h3>Quick Actions</h3></div>
@@ -258,6 +260,7 @@ nav{flex:1;padding:6px}
           <button class="btn-gold" onclick="go('artists',null);openModal('artist')">+ Add Artist</button>
           <button class="btn-gold" onclick="go('releases',null);openModal('release')">+ Add Release</button>
           <button class="btn-gold" onclick="go('reviews',null);openModal('review')">+ Add Review</button>
+          <button class="btn-gold" onclick="go('blog',null);openModal('blog')">+ Add Blog Post</button>
           <button class="btn-gold" onclick="go('services',null);openModal('service')">+ Add Service</button>
           <button class="btn-gold" onclick="go('settings',null)">⚙ Site Settings</button>
           <button class="btn-gold" onclick="go('logos',null)">🖼 Platform Logos</button>
@@ -269,14 +272,14 @@ nav{flex:1;padding:6px}
           <button class="btn-sm" id="seed-btn" onclick="seedData()">Seed Default Data</button>
         </div>
         <div class="sec-body" style="font-size:12px;color:var(--txt3);line-height:1.8">
-          This will add the <strong style="color:var(--txt2)">3 artists</strong> (Aabyd Khan, The Imaginary Bird, The Imaginary Poet), <strong style="color:var(--txt2)">8 releases</strong> (Ghazi Tapes, Alive, Dream, Trending, Drift, My Story, They Call Him OG, Let's Dance), <strong style="color:var(--txt2)">9 services</strong>, and <strong style="color:var(--txt2)">6 reviews</strong> into Firestore so they appear in the admin and on the website.<br/><br/>
+          This will add the <strong style="color:var(--txt2)">3 artists</strong> (Aabyd Khan, The Imaginary Bird, The Imaginary Poet), <strong style="color:var(--txt2)">8 releases</strong> (Ghazi Tapes, Alive, Dream, Trending, Drift, My Story, They Call Him OG, Let's Dance), <strong style="color:var(--txt2)">9 services</strong>, <strong style="color:var(--txt2)">6 reviews</strong>, and <strong style="color:var(--txt2)">2 starter blog posts</strong> into Firestore so they appear in the admin and on the website.<br/><br/>
           <span style="color:rgba(239,68,68,.8)">⚠ Only click once. After seeding, this panel will disappear and all data will be editable above.</span>
         </div>
       </div>
       <div class="sec">
         <div class="sec-head"><h3>How It Works</h3></div>
         <div class="sec-body" style="display:flex;flex-direction:column;gap:8px">
-          <div style="background:var(--card);border:1px solid var(--brd);border-radius:8px;padding:12px;font-size:12px;color:var(--txt2);line-height:1.7"><strong style="color:var(--red)">→ Firestore Collections:</strong> <code style="color:var(--red);background:rgba(204,0,0,.08);padding:1px 5px;border-radius:3px">site_artists</code> <code style="color:var(--red);background:rgba(204,0,0,.08);padding:1px 5px;border-radius:3px">site_releases</code> <code style="color:var(--red);background:rgba(204,0,0,.08);padding:1px 5px;border-radius:3px">site_services</code> <code style="color:var(--red);background:rgba(204,0,0,.08);padding:1px 5px;border-radius:3px">site_reviews</code> <code style="color:var(--red);background:rgba(204,0,0,.08);padding:1px 5px;border-radius:3px">site_settings</code></div>
+          <div style="background:var(--card);border:1px solid var(--brd);border-radius:8px;padding:12px;font-size:12px;color:var(--txt2);line-height:1.7"><strong style="color:var(--red)">→ Firestore Collections:</strong> <code style="color:var(--red);background:rgba(204,0,0,.08);padding:1px 5px;border-radius:3px">site_artists</code> <code style="color:var(--red);background:rgba(204,0,0,.08);padding:1px 5px;border-radius:3px">site_releases</code> <code style="color:var(--red);background:rgba(204,0,0,.08);padding:1px 5px;border-radius:3px">site_services</code> <code style="color:var(--red);background:rgba(204,0,0,.08);padding:1px 5px;border-radius:3px">site_reviews</code> <code style="color:var(--red);background:rgba(204,0,0,.08);padding:1px 5px;border-radius:3px">site_blog</code> <code style="color:var(--red);background:rgba(204,0,0,.08);padding:1px 5px;border-radius:3px">site_settings</code></div>
           <div style="background:var(--card);border:1px solid var(--brd);border-radius:8px;padding:12px;font-size:12px;color:var(--txt2);line-height:1.7"><strong style="color:var(--red)">→ Platform Logos</strong> — Saved in <code style="color:var(--red);background:rgba(204,0,0,.08);padding:1px 5px;border-radius:3px">site_settings</code> as <code style="color:var(--red);background:rgba(204,0,0,.08);padding:1px 5px;border-radius:3px">logo_spotify</code>, <code style="color:var(--red);background:rgba(204,0,0,.08);padding:1px 5px;border-radius:3px">logo_apple</code>, etc. Website reads these for release detail pages and artist panels.</div>
           <div style="background:var(--card);border:1px solid var(--brd);border-radius:8px;padding:12px;font-size:12px;color:var(--txt2);line-height:1.7"><strong style="color:var(--red)">→ Smart Link</strong> — Each release has a <strong>Smart Link</strong> field. This is the main "STREAM HERE" button on the release detail page. Set it to your linktr.ee, feature.fm, or any single URL that has all platform links.</div>
         </div>
@@ -327,6 +330,17 @@ nav{flex:1;padding:6px}
       </div>
     </div>
 
+    <!-- BLOG -->
+    <div class="pg" id="page-blog">
+      <div class="sec">
+        <div class="sec-head"><div><h3>Blog Posts</h3><p id="blog-cnt">0 posts</p></div><button class="btn-sm" onclick="openModal('blog')">+ Add Post</button></div>
+        <div class="sec-body">
+          <div class="al al-s" id="blog-ok"></div>
+          <div class="item-list" id="blog-list"><div class="empty"><div class="empty-icon">📰</div><div class="empty-txt">No blog posts yet</div></div></div>
+        </div>
+      </div>
+    </div>
+
     <!-- SITE SETTINGS -->
     <div class="pg" id="page-settings">
       <div class="sec">
@@ -368,6 +382,8 @@ nav{flex:1;padding:6px}
             <div class="logo-item"><label>YouTube Music</label><input type="url" id="lg-youtube" placeholder="https://...logo url..." oninput="previewLogo('lg-youtube','lpv-youtube')"/><div class="preview-row"><div class="logo-preview-sm" id="lpv-youtube"><span class="logo-default">▶️</span></div><span class="logo-name-sm">YouTube</span></div></div>
             <div class="logo-item"><label>Amazon Music</label><input type="url" id="lg-amazon" placeholder="https://...logo url..." oninput="previewLogo('lg-amazon','lpv-amazon')"/><div class="preview-row"><div class="logo-preview-sm" id="lpv-amazon"><span class="logo-default">📦</span></div><span class="logo-name-sm">Amazon Music</span></div></div>
             <div class="logo-item"><label>Tidal</label><input type="url" id="lg-tidal" placeholder="https://...logo url..." oninput="previewLogo('lg-tidal','lpv-tidal')"/><div class="preview-row"><div class="logo-preview-sm" id="lpv-tidal"><span class="logo-default">🌊</span></div><span class="logo-name-sm">Tidal</span></div></div>
+            <div class="logo-item"><label>Deezer</label><input type="url" id="lg-deezer" placeholder="https://...logo url..." oninput="previewLogo('lg-deezer','lpv-deezer')"/><div class="preview-row"><div class="logo-preview-sm" id="lpv-deezer"><span class="logo-default">🎶</span></div><span class="logo-name-sm">Deezer</span></div></div>
+            <div class="logo-item"><label>SoundCloud</label><input type="url" id="lg-soundcloud" placeholder="https://...logo url..." oninput="previewLogo('lg-soundcloud','lpv-soundcloud')"/><div class="preview-row"><div class="logo-preview-sm" id="lpv-soundcloud"><span class="logo-default">☁️</span></div><span class="logo-name-sm">SoundCloud</span></div></div>
           </div>
           <div style="margin-top:16px"><button class="btn-gold" onclick="saveLogos()" style="padding:11px 32px">Save Platform Logos</button></div>
         </div>
@@ -434,7 +450,7 @@ nav{flex:1;padding:6px}
 <div class="toast" id="toast"></div>
 
 <script>
-let artists=[],releases=[],services=[],reviews=[];
+let artists=[],releases=[],services=[],reviews=[],blog=[];
 let editingId=null,editingType=null;
 
 // ── AUTH ──
@@ -466,7 +482,7 @@ function doSignOut(){auth.signOut();}
 // ── LOAD ──
 async function loadAll(){
   toast('Loading...');
-  await Promise.all([loadArtists(),loadReleases(),loadServices(),loadReviews(),loadSettings(),loadLogos(),loadHero()]);
+  await Promise.all([loadArtists(),loadReleases(),loadServices(),loadReviews(),loadBlog(),loadSettings(),loadLogos(),loadHero()]);
   updateOV();
   toast('Ready ✓');
 }
@@ -503,6 +519,14 @@ async function loadReviews(){
     renderReviews();
   }catch(e){console.error('loadReviews error:',e);toast('Reviews error: '+e.message);}
 }
+async function loadBlog(){
+  try{
+    const s=await db.collection('site_blog').get();
+    blog=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.order??99)-(b.order??99));
+    console.log('Blog posts loaded:',blog.length);
+    renderBlog();
+  }catch(e){console.error('loadBlog error:',e);toast('Blog error: '+e.message);}
+}
 async function loadSettings(){
   try{
     const s=await db.collection('site_settings').doc('main').get();
@@ -521,7 +545,7 @@ async function loadLogos(){
     const s=await db.collection('site_settings').doc('main').get();
     if(s.exists){
       const d=s.data();
-      ['spotify','apple','jiosaavn','youtube','amazon','tidal'].forEach(k=>{
+      ['spotify','apple','jiosaavn','youtube','amazon','tidal','deezer','soundcloud'].forEach(k=>{
         const val=d['logo_'+k];
         if(val){
           const inp=document.getElementById('lg-'+k);
@@ -552,10 +576,11 @@ function updateOV(){
   document.getElementById('ov-r').textContent=releases.length;
   document.getElementById('ov-s').textContent=services.length;
   document.getElementById('ov-rv').textContent=reviews.length;
+  document.getElementById('ov-b').textContent=blog.length;
   // Hide seed panel once data exists
   const seedSec=document.getElementById('seed-sec');
   if(seedSec){
-    const hasData=artists.length||releases.length||services.length||reviews.length;
+    const hasData=artists.length||releases.length||services.length||reviews.length||blog.length;
     seedSec.style.display=hasData?'none':'block';
   }
 }
@@ -604,6 +629,11 @@ async function seedData(){
     {text:'Submitted my demo on a Sunday, got a reply by Tuesday. From signing to release, the process was seamless.',author:'DJ RAVE',role:'Electronic Artist',stars:5}
   ];
 
+  const DEFAULT_BLOG=[
+    {title:'Welcome to The Imaginary Records',tag:'TIR NEWS',date:new Date().toISOString().slice(0,10),author:'The Imaginary Records',excerpt:'We are officially live — here is what TIR is all about and what is coming next for our artists.',imageUrl:'',content:'The Imaginary Records is officially open for business. Built from Kashmir, our mission is simple: give independent artists a real shot at global distribution without giving up their rights.\n\nOver the coming months we will be sharing roster updates, new releases, distribution tips, and behind-the-scenes stories from the artists we work with. Stay tuned — this is just the beginning.'},
+    {title:'How To Submit Your Demo To TIR',tag:'GUIDE',date:new Date().toISOString().slice(0,10),author:'The Imaginary Records',excerpt:'A quick guide on what we look for, how to prepare your submission, and what happens after you hit send.',imageUrl:'',content:'Submitting a demo to The Imaginary Records is simple. Head to the Submit Demo page, fill out the form with your music, artist name, genre, and a short bio.\n\nOur A&R team listens to every single submission. We are looking for originality, quality production, and artists who are serious about building something long-term. If your sound fits, you will hear back from us within 24-48 hours.'}
+  ];
+
   try{
     const batch=db.batch();
     const ts=new Date().toISOString();
@@ -623,6 +653,10 @@ async function seedData(){
     DEFAULT_REVIEWS.forEach((r,i)=>{
       const ref=db.collection('site_reviews').doc();
       batch.set(ref,{...r,order:i,createdAt:ts});
+    });
+    DEFAULT_BLOG.forEach((p,i)=>{
+      const ref=db.collection('site_blog').doc();
+      batch.set(ref,{...p,order:i,createdAt:ts});
     });
 
     await batch.commit();
@@ -733,6 +767,30 @@ function renderReviews(){
   updateOV();
 }
 
+function renderBlog(){
+  document.getElementById('blog-cnt').textContent=blog.length+' post'+(blog.length!==1?'s':'');
+  const el=document.getElementById('blog-list');
+  if(!blog.length){el.innerHTML='<div class="empty"><div class="empty-icon">📰</div><div class="empty-txt">No blog posts yet. Click + Add Post.</div></div>';updateOV();return;}
+  el.innerHTML=blog.map((p,i)=>`
+    <div class="item-card">
+      <div class="item-art">${p.imageUrl?`<img src="${e(p.imageUrl)}" onerror="this.style.display='none'" />`:'📰'}</div>
+      <div class="item-info">
+        <div class="item-name">${e(p.title)||'—'}</div>
+        <div class="item-sub">${e(p.tag)||'TIR NEWS'} · <span style="color:var(--txt3);font-size:11px">${p.date||'—'}</span></div>
+        <div class="item-links">
+          ${p.author?`<span class="lb">✍ ${e(p.author)}</span>`:''}
+        </div>
+      </div>
+      <div class="item-actions">
+        <button class="btn-ord" onclick="moveItem('blog',${i},-1)">↑</button>
+        <button class="btn-ord" onclick="moveItem('blog',${i},1)">↓</button>
+        <button class="btn-edit" onclick="openModal('blog','${p.id}')">Edit</button>
+        <button class="btn-del" onclick="deleteItem('site_blog','${p.id}','blog')">Delete</button>
+      </div>
+    </div>`).join('');
+  updateOV();
+}
+
 // ── MODAL ──
 function openModal(type,id=null){
   editingType=type;editingId=id;
@@ -744,12 +802,14 @@ function openModal(type,id=null){
     if(type==='release')data=releases.find(r=>r.id===id)||{};
     if(type==='service')data=services.find(s=>s.id===id)||{};
     if(type==='review')data=reviews.find(r=>r.id===id)||{};
+    if(type==='blog')data=blog.find(p=>p.id===id)||{};
   }
   document.getElementById('modal-body').innerHTML=modalHtml(type,data);
   document.getElementById('modal').classList.add('on');
   // Re-trigger previews
   if(data.imageUrl)previewImg('m-image','img-prev-artist');
   if(data.artworkUrl)previewImg('m-artwork','img-prev-rel');
+  if(type==='blog'&&data.imageUrl)previewImg('m-image','img-prev-blog');
 }
 function closeModal(){document.getElementById('modal').classList.remove('on');editingId=null;editingType=null;}
 
@@ -776,6 +836,8 @@ function modalHtml(type,d={}){
       <div class="fg"><label>Instagram URL</label><input type="url" id="m-instagram" value="${e(d.instagramUrl)}" placeholder="https://instagram.com/..."/></div>
       <div class="fg"><label>Amazon Music URL</label><input type="url" id="m-amazon" value="${e(d.amazonUrl)}" placeholder="https://music.amazon.com/..."/></div>
       <div class="fg"><label>Tidal URL</label><input type="url" id="m-tidal" value="${e(d.tidalUrl)}" placeholder="https://tidal.com/..."/></div>
+      <div class="fg"><label>Deezer URL</label><input type="url" id="m-deezer" value="${e(d.deezerUrl)}" placeholder="https://deezer.com/..."/></div>
+      <div class="fg"><label>SoundCloud URL</label><input type="url" id="m-soundcloud" value="${e(d.soundcloudUrl)}" placeholder="https://soundcloud.com/..."/></div>
     </div>
     <div class="mo-actions"><button class="btn-save" onclick="saveItem('artist')">Save Artist</button><button class="btn-cancel" onclick="closeModal()">Cancel</button></div>`;
 
@@ -801,6 +863,8 @@ function modalHtml(type,d={}){
       <div class="fg"><label>YouTube URL</label><input type="url" id="m-youtube" value="${e(d.youtubeUrl)}" placeholder="https://youtube.com/..."/></div>
       <div class="fg"><label>Amazon Music URL</label><input type="url" id="m-amazon" value="${e(d.amazonUrl)}" placeholder="https://music.amazon.com/..."/></div>
       <div class="fg"><label>Tidal URL</label><input type="url" id="m-tidal" value="${e(d.tidalUrl)}" placeholder="https://tidal.com/..."/></div>
+      <div class="fg"><label>Deezer URL</label><input type="url" id="m-deezer" value="${e(d.deezerUrl)}" placeholder="https://deezer.com/..."/></div>
+      <div class="fg"><label>SoundCloud URL</label><input type="url" id="m-soundcloud" value="${e(d.soundcloudUrl)}" placeholder="https://soundcloud.com/..."/></div>
     </div>
     <div class="mo-actions"><button class="btn-save" onclick="saveItem('release')">Save Release</button><button class="btn-cancel" onclick="closeModal()">Cancel</button></div>`;
 
@@ -821,6 +885,24 @@ function modalHtml(type,d={}){
       <div class="fg"><label>Platform / Source</label><input id="m-platform" value="${e(d.platform)}" placeholder="Google, Instagram..."/></div>
     </div>
     <div class="mo-actions"><button class="btn-save" onclick="saveItem('review')">Save Review</button><button class="btn-cancel" onclick="closeModal()">Cancel</button></div>`;
+
+  if(type==='blog') return `
+    <div class="fg2">
+      <div class="fsec">Post Details</div>
+      <div class="fg full"><label>Title *</label><input id="m-title" value="${e(d.title)}" placeholder="e.g. TIR Signs New Artist"/></div>
+      <div class="fg"><label>Tag / Category</label><input id="m-tag" value="${e(d.tag)||'TIR NEWS'}" placeholder="TIR NEWS, RELEASE, ANNOUNCEMENT"/></div>
+      <div class="fg"><label>Date</label><input type="date" id="m-date" value="${e(d.date)||new Date().toISOString().slice(0,10)}"/></div>
+      <div class="fg full"><label>Author</label><input id="m-author" value="${e(d.author)||'The Imaginary Records'}" placeholder="Author name"/></div>
+      <div class="fg full"><label>Excerpt <span class="hint">(short summary shown on blog grid)</span></label><textarea id="m-excerpt" style="min-height:70px">${e(d.excerpt)}</textarea></div>
+      <div class="fsec">Cover Image</div>
+      <div class="fg full"><label>Cover Image URL <span class="hint">(direct image link)</span></label>
+        <input type="url" id="m-image" value="${e(d.imageUrl)}" placeholder="https://... direct image link" oninput="previewImg('m-image','img-prev-blog')"/>
+        <div class="img-preview" id="img-prev-blog" style="height:160px">${d.imageUrl?`<img src="${e(d.imageUrl)}" onerror="this.innerHTML='<span class=no-img>Image not found</span>'" />`:'<div class="no-img">Paste URL above to preview</div>'}</div>
+      </div>
+      <div class="fsec">Content</div>
+      <div class="fg full"><label>Post Content <span class="hint">(plain text — separate paragraphs with a blank line)</span></label><textarea id="m-content" style="min-height:240px">${e(d.content)}</textarea></div>
+    </div>
+    <div class="mo-actions"><button class="btn-save" onclick="saveItem('blog')">Save Post</button><button class="btn-cancel" onclick="closeModal()">Cancel</button></div>`;
 }
 
 function previewImg(inputId,previewId){
@@ -841,11 +923,11 @@ async function saveItem(type){
   if(type==='artist'){
     col='site_artists';
     if(!gv('m-name'))return toast('Enter artist name.');
-    data={name:gv('m-name'),genre:gv('m-genre'),status:gv('m-status'),tags:gv('m-tags').split(',').map(t=>t.trim()).filter(Boolean),bio:gv('m-bio'),imageUrl:gv('m-image'),spotifyUrl:gv('m-spotify'),spotifyEmbedUrl:gv('m-spotify-embed'),appleMusicUrl:gv('m-apple'),jioSaavnUrl:gv('m-jio'),youtubeUrl:gv('m-youtube'),instagramUrl:gv('m-instagram'),amazonUrl:gv('m-amazon'),tidalUrl:gv('m-tidal')};
+    data={name:gv('m-name'),genre:gv('m-genre'),status:gv('m-status'),tags:gv('m-tags').split(',').map(t=>t.trim()).filter(Boolean),bio:gv('m-bio'),imageUrl:gv('m-image'),spotifyUrl:gv('m-spotify'),spotifyEmbedUrl:gv('m-spotify-embed'),appleMusicUrl:gv('m-apple'),jioSaavnUrl:gv('m-jio'),youtubeUrl:gv('m-youtube'),instagramUrl:gv('m-instagram'),amazonUrl:gv('m-amazon'),tidalUrl:gv('m-tidal'),deezerUrl:gv('m-deezer'),soundcloudUrl:gv('m-soundcloud')};
   } else if(type==='release'){
     col='site_releases';
     if(!gv('m-title'))return toast('Enter release title.');
-    data={title:gv('m-title'),artist:gv('m-artist'),type:gv('m-type'),year:gv('m-year'),genre:gv('m-genre'),description:gv('m-desc'),artworkUrl:gv('m-artwork'),smartlinkUrl:gv('m-smartlink'),spotifyUrl:gv('m-spotify'),appleMusicUrl:gv('m-apple'),jioSaavnUrl:gv('m-jio'),youtubeUrl:gv('m-youtube'),amazonUrl:gv('m-amazon'),tidalUrl:gv('m-tidal')};
+    data={title:gv('m-title'),artist:gv('m-artist'),type:gv('m-type'),year:gv('m-year'),genre:gv('m-genre'),description:gv('m-desc'),artworkUrl:gv('m-artwork'),smartlinkUrl:gv('m-smartlink'),spotifyUrl:gv('m-spotify'),appleMusicUrl:gv('m-apple'),jioSaavnUrl:gv('m-jio'),youtubeUrl:gv('m-youtube'),amazonUrl:gv('m-amazon'),tidalUrl:gv('m-tidal'),deezerUrl:gv('m-deezer'),soundcloudUrl:gv('m-soundcloud')};
   } else if(type==='service'){
     col='site_services';
     if(!gv('m-name'))return toast('Enter service name.');
@@ -854,6 +936,10 @@ async function saveItem(type){
     col='site_reviews';
     if(!gv('m-text'))return toast('Enter review text.');
     data={text:gv('m-text'),author:gv('m-author'),role:gv('m-role'),stars:Number(gv('m-stars'))||5,platform:gv('m-platform')};
+  } else if(type==='blog'){
+    col='site_blog';
+    if(!gv('m-title'))return toast('Enter post title.');
+    data={title:gv('m-title'),tag:gv('m-tag')||'TIR NEWS',date:gv('m-date'),author:gv('m-author')||'The Imaginary Records',excerpt:gv('m-excerpt'),imageUrl:gv('m-image'),content:gv('m-content')};
   }
   const btn=document.querySelector('#modal .btn-save');
   btn.disabled=true;btn.textContent='Saving...';
@@ -872,6 +958,7 @@ async function saveItem(type){
     if(type==='release')await loadReleases();
     if(type==='service')await loadServices();
     if(type==='review')await loadReviews();
+    if(type==='blog')await loadBlog();
   }catch(ex){toast('Error: '+ex.message);}
   btn.disabled=false;btn.textContent='Save '+type.charAt(0).toUpperCase()+type.slice(1);
 }
@@ -881,12 +968,13 @@ async function deleteItem(col,id,type){
   try{await db.collection(col).doc(id).delete();toast('Deleted ✓');
     if(type==='artist')await loadArtists();if(type==='release')await loadReleases();
     if(type==='service')await loadServices();if(type==='review')await loadReviews();
+    if(type==='blog')await loadBlog();
   }catch(ex){toast('Error: '+ex.message);}
 }
 
 async function moveItem(type,idx,dir){
-  const arrMap={artist:artists,release:releases,service:services,review:reviews};
-  const colMap={artist:'site_artists',release:'site_releases',service:'site_services',review:'site_reviews'};
+  const arrMap={artist:artists,release:releases,service:services,review:reviews,blog:blog};
+  const colMap={artist:'site_artists',release:'site_releases',service:'site_services',review:'site_reviews',blog:'site_blog'};
   const arr=arrMap[type],col=colMap[type];
   const ni=idx+dir;if(ni<0||ni>=arr.length)return;
   [arr[idx],arr[ni]]=[arr[ni],arr[idx]];
@@ -896,6 +984,7 @@ async function moveItem(type,idx,dir){
     await batch.commit();
     if(type==='artist')renderArtists();if(type==='release')renderReleases();
     if(type==='service')renderServices();if(type==='review')renderReviews();
+    if(type==='blog')renderBlog();
     toast('Order saved ✓');
   }catch(ex){toast('Error: '+ex.message);}
 }
@@ -911,7 +1000,7 @@ async function saveSettings(){
 
 async function saveLogos(){
   const gv=id=>document.getElementById(id)?.value.trim()||'';
-  const data={logo_spotify:gv('lg-spotify'),logo_apple:gv('lg-apple'),logo_jiosaavn:gv('lg-jiosaavn'),logo_youtube:gv('lg-youtube'),logo_amazon:gv('lg-amazon'),logo_tidal:gv('lg-tidal'),updatedAt:new Date().toISOString()};
+  const data={logo_spotify:gv('lg-spotify'),logo_apple:gv('lg-apple'),logo_jiosaavn:gv('lg-jiosaavn'),logo_youtube:gv('lg-youtube'),logo_amazon:gv('lg-amazon'),logo_tidal:gv('lg-tidal'),logo_deezer:gv('lg-deezer'),logo_soundcloud:gv('lg-soundcloud'),updatedAt:new Date().toISOString()};
   try{await db.collection('site_settings').doc('main').set(data,{merge:true});toast('Logos saved ✓');}
   catch(ex){toast('Error: '+ex.message);}
 }
@@ -932,7 +1021,7 @@ function go(name,el){
   document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));
   document.getElementById('page-'+name)?.classList.add('on');
   if(el)el.classList.add('on');
-  const m={overview:['Dashboard','Website CMS'],artists:['Artists / Roster','Manage your artists'],releases:['Releases / Catalogue','Manage releases'],services:['Label Services','Manage services'],reviews:['Reviews','Manage testimonials'],settings:['Site Settings','Contact & links'],logos:['Platform Logos','Customise streaming icons'],hero:['Hero & About','Edit text & stats']};
+  const m={overview:['Dashboard','Website CMS'],artists:['Artists / Roster','Manage your artists'],releases:['Releases / Catalogue','Manage releases'],services:['Label Services','Manage services'],reviews:['Reviews','Manage testimonials'],blog:['Blog Posts','Write & manage blog posts'],settings:['Site Settings','Contact & links'],logos:['Platform Logos','Customise streaming icons'],hero:['Hero & About','Edit text & stats']};
   const [t,s]=m[name]||['Admin',''];
   document.getElementById('pgt').textContent=t;document.getElementById('pgs').textContent=s;
   window.scrollTo(0,0);
