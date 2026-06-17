@@ -779,6 +779,7 @@ function renderBlog(){
         <div class="item-sub">${e(p.tag)||'TIR NEWS'} · <span style="color:var(--txt3);font-size:11px">${p.date||'—'}</span></div>
         <div class="item-links">
           ${p.author?`<span class="lb">✍ ${e(p.author)}</span>`:''}
+          ${(p.slug||p.title)?`<span class="lb" style="color:var(--txt3);font-size:10px">🔗 /blog/${e(p.slug||toAdminSlug(p.title))}</span>`:''}
         </div>
       </div>
       <div class="item-actions">
@@ -889,7 +890,15 @@ function modalHtml(type,d={}){
   if(type==='blog') return `
     <div class="fg2">
       <div class="fsec">Post Details</div>
-      <div class="fg full"><label>Title *</label><input id="m-title" value="${e(d.title)}" placeholder="e.g. TIR Signs New Artist"/></div>
+      <div class="fg full"><label>Title *</label><input id="m-title" value="${e(d.title)}" placeholder="e.g. TIR Signs New Artist" oninput="autoSlug()"/></div>
+      <div class="fg full">
+        <label>URL Slug <span class="hint">(auto-filled from title — edit to customise)</span></label>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
+          <span style="font-size:11px;color:var(--txt3);white-space:nowrap">/blog/</span>
+          <input id="m-slug" value="${e(d.slug)}" placeholder="my-post-url" style="flex:1" oninput="cleanSlug(this)"/>
+        </div>
+        <div style="font-size:11px;color:var(--txt3);margin-top:4px">Preview: <span id="slug-preview" style="color:var(--red)">theimaginaryrecords.in/blog/${e(d.slug||'')}</span></div>
+      </div>
       <div class="fg"><label>Tag / Category</label><input id="m-tag" value="${e(d.tag)||'TIR NEWS'}" placeholder="TIR NEWS, RELEASE, ANNOUNCEMENT"/></div>
       <div class="fg"><label>Date</label><input type="date" id="m-date" value="${e(d.date)||new Date().toISOString().slice(0,10)}"/></div>
       <div class="fg full"><label>Author</label><input id="m-author" value="${e(d.author)||'The Imaginary Records'}" placeholder="Author name"/></div>
@@ -939,7 +948,8 @@ async function saveItem(type){
   } else if(type==='blog'){
     col='site_blog';
     if(!gv('m-title'))return toast('Enter post title.');
-    data={title:gv('m-title'),tag:gv('m-tag')||'TIR NEWS',date:gv('m-date'),author:gv('m-author')||'The Imaginary Records',excerpt:gv('m-excerpt'),imageUrl:gv('m-image'),content:gv('m-content')};
+    const rawSlug=gv('m-slug').trim()||toAdminSlug(gv('m-title'));
+    data={title:gv('m-title'),slug:rawSlug,tag:gv('m-tag')||'TIR NEWS',date:gv('m-date'),author:gv('m-author')||'The Imaginary Records',excerpt:gv('m-excerpt'),imageUrl:gv('m-image'),content:gv('m-content')};
   }
   const btn=document.querySelector('#modal .btn-save');
   btn.disabled=true;btn.textContent='Saving...';
@@ -1030,6 +1040,28 @@ function go(name,el){
 // ── UTILS ──
 function v(id){return document.getElementById(id)?.value.trim()||'';}
 function e(s){return(s||'').toString().replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+/* Slug helpers */
+function toAdminSlug(title){
+  return (title||'').toLowerCase()
+    .replace(/[^a-z0-9\s-]/g,'').trim()
+    .replace(/\s+/g,'-').replace(/-+/g,'-').slice(0,80);
+}
+function autoSlug(){
+  const titleEl=document.getElementById('m-title');
+  const slugEl=document.getElementById('m-slug');
+  const previewEl=document.getElementById('slug-preview');
+  if(!titleEl||!slugEl)return;
+  const slug=toAdminSlug(titleEl.value);
+  slugEl.value=slug;
+  if(previewEl)previewEl.textContent='theimaginaryrecords.in/blog/'+slug;
+}
+function cleanSlug(el){
+  const clean=el.value.toLowerCase().replace(/[^a-z0-9-]/g,'-').replace(/-+/g,'-');
+  el.value=clean;
+  const previewEl=document.getElementById('slug-preview');
+  if(previewEl)previewEl.textContent='theimaginaryrecords.in/blog/'+clean;
+}
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),3000);}
 </script>
 </body>
