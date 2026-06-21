@@ -1041,7 +1041,6 @@ function go(name,el){
 function v(id){return document.getElementById(id)?.value.trim()||'';}
 function e(s){return(s||'').toString().replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
-/* Slug helpers */
 function toAdminSlug(title){
   return (title||'').toLowerCase()
     .replace(/[^a-z0-9\s-]/g,'').trim()
