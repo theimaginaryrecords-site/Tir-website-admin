@@ -69,6 +69,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;min-he
 .adot{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 6px rgba(204,0,0,.5);animation:pulse 2s ease infinite}
 nav{flex:1;padding:6px}
 .ns{font-size:9px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:2px;padding:10px 10px 4px}
+.nbadge{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:var(--red);color:#fff;font-size:10px;font-weight:800;margin-left:auto}
 .ni{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:7px;color:var(--txt2);cursor:pointer;font-size:13px;font-weight:500;transition:all .15s;margin-bottom:1px;position:relative}
 .ni:hover{background:var(--card);color:var(--txt)}
 .ni.on{background:var(--red3);color:var(--red);font-weight:600}
@@ -229,6 +230,7 @@ nav{flex:1;padding:6px}
     <div class="ni" onclick="go('services',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Label Services</div>
     <div class="ni" onclick="go('reviews',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Reviews</div>
     <div class="ni" onclick="go('blog',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Blog</div>
+    <div class="ni" onclick="go('inbox',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Inbox <span class="nbadge" id="inbox-badge" style="display:none"></span></div>
     <div class="ns">Settings</div>
     <div class="ni" onclick="go('settings',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 19.07a10 10 0 0 1 0-14.14"/></svg>Site Settings</div>
     <div class="ni" onclick="go('logos',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Platform Logos</div>
@@ -337,6 +339,16 @@ nav{flex:1;padding:6px}
         <div class="sec-body">
           <div class="al al-s" id="blog-ok"></div>
           <div class="item-list" id="blog-list"><div class="empty"><div class="empty-icon">📰</div><div class="empty-txt">No blog posts yet</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INBOX -->
+    <div class="pg" id="page-inbox">
+      <div class="sec">
+        <div class="sec-head"><div><h3>Contact Inbox</h3><p id="inbox-cnt">0 messages</p></div><button class="btn-sm" onclick="loadInbox()">↻ Refresh</button></div>
+        <div class="sec-body">
+          <div class="item-list" id="inbox-list"><div class="empty"><div class="empty-icon">✉️</div><div class="empty-txt">No messages yet</div></div></div>
         </div>
       </div>
     </div>
@@ -482,7 +494,7 @@ function doSignOut(){auth.signOut();}
 // ── LOAD ──
 async function loadAll(){
   toast('Loading...');
-  await Promise.all([loadArtists(),loadReleases(),loadServices(),loadReviews(),loadBlog(),loadSettings(),loadLogos(),loadHero()]);
+  await Promise.all([loadArtists(),loadReleases(),loadServices(),loadReviews(),loadBlog(),loadSettings(),loadLogos(),loadHero(),loadInbox()]);
   updateOV();
   toast('Ready ✓');
 }
@@ -792,6 +804,46 @@ function renderBlog(){
   updateOV();
 }
 
+let inboxMsgs=[];
+async function loadInbox(){
+  try{
+    const snap=await db.collection('site_contact').orderBy('createdAt','desc').limit(100).get();
+    inboxMsgs=snap.docs.map(d=>({id:d.id,...d.data()}));
+  }catch(e){inboxMsgs=[];}
+  renderInbox();
+}
+function renderInbox(){
+  const unread=inboxMsgs.filter(m=>!m.read).length;
+  document.getElementById('inbox-cnt').textContent=inboxMsgs.length+' message'+(inboxMsgs.length!==1?'s':'')+(unread?' \u00b7 '+unread+' unread':'');
+  const badge=document.getElementById('inbox-badge');
+  if(unread){badge.style.display='';badge.textContent=unread;}else{badge.style.display='none';}
+  const el=document.getElementById('inbox-list');
+  if(!inboxMsgs.length){el.innerHTML='<div class="empty"><div class="empty-icon">\u2709\uFE0F</div><div class="empty-txt">No messages yet</div></div>';return;}
+  el.innerHTML=inboxMsgs.map(m=>{
+    const dt=m.createdAt?new Date(m.createdAt).toLocaleString('en-IN',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'';
+    return `<div class="item-card" style="${m.read?'':'border-left:3px solid var(--red)'}">`
+      <div class="item-info">
+        <div class="item-name">${e(m.subject)||'Message'} ${m.read?'':'<span class="lb" style="color:var(--red)">NEW</span>'}</div>
+        <div class="item-sub">${e(m.name)||'\u2014'} &lt;${e(m.email)||''}&gt; \u00b7 <span style="color:var(--txt3);font-size:11px">${dt}</span></div>
+        <div style="font-size:12px;color:var(--txt2);margin-top:6px;white-space:pre-wrap">${e(m.message)||''}</div>
+      </div>
+      <div class="item-actions">
+        <a class="btn-edit" style="text-decoration:none" href="mailto:${encodeURIComponent(m.email||'') }?subject=${encodeURIComponent('Re: '+(m.subject||'Your message to TIR'))}">Reply</a>
+        <button class="btn-ord" onclick="toggleMsgRead('${m.id}',${m.read?'false':'true'})">${m.read?'Mark unread':'Mark read'}</button>
+        <button class="btn-del" onclick="deleteMsg('${m.id}')">Delete</button>
+      </div>
+    </div>`;}).join('');
+}
+async function toggleMsgRead(id,read){
+  try{await db.collection('site_contact').doc(id).update({read:read});await loadInbox();toast(read?'Marked as read \u2713':'Marked as unread');}
+  catch(ex){toast('Error: '+ex.message);}
+}
+async function deleteMsg(id){
+  if(!confirm('Delete this message? Cannot be undone.'))return;
+  try{await db.collection('site_contact').doc(id).delete();await loadInbox();toast('Deleted \u2713');}
+  catch(ex){toast('Error: '+ex.message);}
+}
+
 // ── MODAL ──
 function openModal(type,id=null){
   editingType=type;editingId=id;
@@ -1031,7 +1083,7 @@ function go(name,el){
   document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));
   document.getElementById('page-'+name)?.classList.add('on');
   if(el)el.classList.add('on');
-  const m={overview:['Dashboard','Website CMS'],artists:['Artists / Roster','Manage your artists'],releases:['Releases / Catalogue','Manage releases'],services:['Label Services','Manage services'],reviews:['Reviews','Manage testimonials'],blog:['Blog Posts','Write & manage blog posts'],settings:['Site Settings','Contact & links'],logos:['Platform Logos','Customise streaming icons'],hero:['Hero & About','Edit text & stats']};
+  const m={overview:['Dashboard','Website CMS'],artists:['Artists / Roster','Manage your artists'],releases:['Releases / Catalogue','Manage releases'],services:['Label Services','Manage services'],reviews:['Reviews','Manage testimonials'],blog:['Blog Posts','Write & manage blog posts'],inbox:['Inbox','Contact form messages'],settings:['Site Settings','Contact & links'],logos:['Platform Logos','Customise streaming icons'],hero:['Hero & About','Edit text & stats']};
   const [t,s]=m[name]||['Admin',''];
   document.getElementById('pgt').textContent=t;document.getElementById('pgs').textContent=s;
   window.scrollTo(0,0);
